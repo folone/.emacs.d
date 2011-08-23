@@ -3,3 +3,4 @@
 .#*
 
 custom-jabber-settings.el
+*.elc
