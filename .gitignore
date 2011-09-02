@@ -4,3 +4,8 @@
 
 custom-jabber-settings.el
 *.elc
+
+.emacs.desktop
+.emms-history
+ac-comphist.dat
+places
