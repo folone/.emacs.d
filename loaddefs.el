@@ -494,6 +494,17 @@ Major mode for editing POD files (Plain Old Documentation for Perl).
 
 ;;;***
 
+;;;### (autoloads (rainbow-delimiters-mode) "rainbow-delimiters"
+;;;;;;  "elpa-to-submit/rainbow-delimiters.el" (20072 31119))
+;;; Generated autoloads from elpa-to-submit/rainbow-delimiters.el
+
+(autoload 'rainbow-delimiters-mode "rainbow-delimiters" "\
+Color nested parentheses, brackets, and braces according to their depth.
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
 ;;;### (autoloads (ri) "ri" "elpa-to-submit/ri.el" (19512 61015))
 ;;; Generated autoloads from elpa-to-submit/ri.el
 
@@ -589,9 +600,9 @@ Just some alien fruit salad to keep you in the zone.
 
 ;;;***
 
-;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/dzhan.el"
-;;;;;;  "elpa-to-submit/edit-server.el" "elpa-to-submit/eshell-vc.el"
-;;;;;;  "elpa-to-submit/notify.el") (19802 31775 314611))
+;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/edit-server.el"
+;;;;;;  "elpa-to-submit/eshell-vc.el" "elpa-to-submit/notify.el")
+;;;;;;  (20072 31238 487235))
 
 ;;;***
 

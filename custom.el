@@ -176,3 +176,8 @@
 (add-to-list 'load-path (concat dotfiles-dir "/nyan-mode"))
 (require 'nyan-mode)
 (nyan-mode 1)
+
+;; Colourfull brackets
+(require 'rainbow-delimiters)
+;; Add hooks for modes where you want it enabled, for example:
+(add-hook 'scala-mode-hook 'rainbow-delimiters-mode)
