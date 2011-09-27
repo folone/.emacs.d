@@ -181,3 +181,7 @@
 (require 'rainbow-delimiters)
 ;; Add hooks for modes where you want it enabled, for example:
 (add-hook 'scala-mode-hook 'rainbow-delimiters-mode)
+
+;; Line numbers
+(require 'linum)
+(global-linum-mode 1)
