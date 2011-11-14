@@ -2,7 +2,7 @@
 ;;
 ;;; Code:
 
-
+
 ;;;### (autoloads (color-theme-blackboard) "blackboard" "elpa-to-submit/blackboard.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/blackboard.el
@@ -15,7 +15,7 @@ by John Gruber.
 \(fn)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (cheat) "cheat" "elpa-to-submit/cheat.el" (20100
 ;;;;;;  32886))
 ;;; Generated autoloads from elpa-to-submit/cheat.el
@@ -29,7 +29,7 @@ as a string instead.
 \(fn NAME &optional SILENT)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (cperl-perldoc-at-point cperl-perldoc cperl-mode)
 ;;;;;;  "cperl-mode" "elpa-to-submit/cperl-mode.el" (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/cperl-mode.el
@@ -226,7 +226,7 @@ Run a `perldoc' on the word around point.
 (add-to-list 'interpreter-mode-alist '("perl" . perl-mode))
 
 ;;;***
-
+
 ;;;### (autoloads (erc-highlight-nicknames) "erc-highlight-nicknames"
 ;;;;;;  "elpa-to-submit/erc-highlight-nicknames.el" (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/erc-highlight-nicknames.el
@@ -239,7 +239,7 @@ color (#rrrrggggbbbb).
 \(fn)" nil nil)
 
 ;;;***
-
+
 ;;;### (autoloads (espresso-mode) "espresso" "elpa-to-submit/espresso.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/espresso.el
@@ -254,7 +254,7 @@ Key bindings:
 \(fn)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (hexrgb-blue hexrgb-green hexrgb-red hexrgb-value
 ;;;;;;  hexrgb-saturation hexrgb-hue hexrgb-complement hexrgb-read-color
 ;;;;;;  hexrgb-canonicalize-defined-colors-flag) "hexrgb" "elpa-to-submit/hexrgb.el"
@@ -443,7 +443,7 @@ HTMLize dired-marked files.
 \(fn ARG &optional TARGET-DIRECTORY)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (javadoc-lookup) "javadoc-help" "elpa-to-submit/javadoc-help.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/javadoc-help.el
@@ -454,7 +454,7 @@ Look up Java class in Javadoc.
 \(fn)" t nil)
 
 ;;;***
-
+
 <<<<<<< Updated upstream
 ;;;### (autoloads (js2-mode) "js2" "elpa-to-submit/js2.el" (20100
 ;;;;;;  32886))
@@ -471,7 +471,7 @@ Major mode for editing JavaScript code.
 \(fn)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (markdown-mode) "markdown-mode" "elpa-to-submit/markdown-mode.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/markdown-mode.el
@@ -576,7 +576,7 @@ Make the URL of current oddmuse page the latest kill in the kill ring.
 \(fn)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (paredit-mode) "paredit" "elpa-to-submit/paredit.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/paredit.el
@@ -593,7 +593,7 @@ Paredit behaves badly if parentheses are imbalanced, so exercise
 \(fn &optional ARG)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (pcomplete/rake) "pcmpl-rake" "elpa-to-submit/pcmpl-rake.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/pcmpl-rake.el
@@ -621,7 +621,7 @@ Find a perl library by module name
 \(fn LIBRARY)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (pod-mode) "pod-mode" "elpa-to-submit/pod-mode.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/pod-mode.el
@@ -632,7 +632,7 @@ Major mode for editing POD files (Plain Old Documentation for Perl).
 \(fn)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (rainbow-delimiters-mode) "rainbow-delimiters"
 ;;;;;;  "elpa-to-submit/rainbow-delimiters.el" (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/rainbow-delimiters.el
@@ -643,7 +643,7 @@ Color nested parentheses, brackets, and braces according to their depth.
 \(fn &optional ARG)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (ri) "ri" "elpa-to-submit/ri.el" (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/ri.el
 
@@ -653,7 +653,7 @@ Look up Ruby documentation.
 \(fn &optional RI-DOCUMENTED)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (ruby-electric-mode) "ruby-electric" "elpa-to-submit/ruby-electric.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/ruby-electric.el
@@ -674,7 +674,7 @@ strings. Note that you must have Font Lock enabled.
 \(fn &optional ARG)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (scpaste-region scpaste) "scpaste" "elpa-to-submit/scpaste.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/scpaste.el
@@ -690,7 +690,7 @@ Paste the current region via `scpaste'.
 \(fn NAME)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (textile-mode) "textile-mode" "elpa-to-submit/textile-mode.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/textile-mode.el
@@ -703,7 +703,7 @@ A major mode for editing textile files.
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
 
 ;;;***
-
+
 ;;;### (autoloads (tt-mode) "tt-mode" "elpa-to-submit/tt-mode.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/tt-mode.el
@@ -714,7 +714,7 @@ Major mode for editing Template Toolkit files
 \(fn)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (color-theme-twilight) "twilight" "elpa-to-submit/twilight.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/twilight.el
@@ -725,7 +725,7 @@ Color theme by Marcus Crafter, based off the TextMate Twilight theme, created 20
 \(fn)" t nil)
 
 ;;;***
-
+
 ;;;### (autoloads (color-theme-zenburn) "zenburn" "elpa-to-submit/zenburn.el"
 ;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/zenburn.el
@@ -738,22 +738,14 @@ Just some alien fruit salad to keep you in the zone.
 (defalias 'zenburn #'color-theme-zenburn)
 
 ;;;***
-
-<<<<<<< Updated upstream
+
 ;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/custom-jabber-settings.el"
 ;;;;;;  "elpa-to-submit/custom-look.el" "elpa-to-submit/edit-server.el"
 ;;;;;;  "elpa-to-submit/eshell-vc.el" "elpa-to-submit/notify.el")
 ;;;;;;  (20100 34589 389606))
-=======
-;;;### (autoloads nil nil ("elpa-to-submit/color-theme-tango.el"
-;;;;;;  "elpa-to-submit/color-theme.el" "elpa-to-submit/custom-jabber-settings.el"
-;;;;;;  "elpa-to-submit/custom-look.el" "elpa-to-submit/edit-server.el"
-;;;;;;  "elpa-to-submit/eshell-vc.el" "elpa-to-submit/notify.el")
-;;;;;;  (20128 9489 49915))
->>>>>>> Stashed changes
 
 ;;;***
-
+
 (provide 'loaddefs)
 ;; Local Variables:
 ;; version-control: never
