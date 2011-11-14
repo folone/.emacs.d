@@ -455,8 +455,13 @@ Look up Java class in Javadoc.
 
 ;;;***
 
+<<<<<<< Updated upstream
 ;;;### (autoloads (js2-mode) "js2" "elpa-to-submit/js2.el" (20100
 ;;;;;;  32886))
+=======
+;;;### (autoloads (js2-mode) "js2" "elpa-to-submit/js2.el" (20126
+;;;;;;  34293))
+>>>>>>> Stashed changes
 ;;; Generated autoloads from elpa-to-submit/js2.el
  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
@@ -734,10 +739,18 @@ Just some alien fruit salad to keep you in the zone.
 
 ;;;***
 
+<<<<<<< Updated upstream
 ;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/custom-jabber-settings.el"
 ;;;;;;  "elpa-to-submit/custom-look.el" "elpa-to-submit/edit-server.el"
 ;;;;;;  "elpa-to-submit/eshell-vc.el" "elpa-to-submit/notify.el")
 ;;;;;;  (20100 34589 389606))
+=======
+;;;### (autoloads nil nil ("elpa-to-submit/color-theme-tango.el"
+;;;;;;  "elpa-to-submit/color-theme.el" "elpa-to-submit/custom-jabber-settings.el"
+;;;;;;  "elpa-to-submit/custom-look.el" "elpa-to-submit/edit-server.el"
+;;;;;;  "elpa-to-submit/eshell-vc.el" "elpa-to-submit/notify.el")
+;;;;;;  (20128 9489 49915))
+>>>>>>> Stashed changes
 
 ;;;***
 
