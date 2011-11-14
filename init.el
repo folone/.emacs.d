@@ -26,6 +26,10 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 
+(add-to-list 'load-path (concat dotfiles-dir "/emacs-jabber"))
+
+(add-to-list 'load-path (concat dotfiles-dir "/haskellmode-emacs"))
+
 ;; Scala stuff
 (add-to-list 'load-path (concat dotfiles-dir "/scala-mode"))
 (require 'scala-mode-auto)
@@ -39,6 +43,7 @@
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
+(setq overconfig-file (concat dotfiles-dir "overconfig.el"))
 
 (require 'package)
 (package-initialize)
@@ -67,6 +72,8 @@
 (require 'starter-kit-perl)
 (require 'starter-kit-ruby)
 (require 'starter-kit-js)
+
+(load overconfig-file 'noerror)
 
 (regen-autoloads)
 (load custom-file 'noerror)

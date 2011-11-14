@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (color-theme-blackboard) "blackboard" "elpa-to-submit/blackboard.el"
-;;;;;;  (19679 6409))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/blackboard.el
 
 (autoload 'color-theme-blackboard "blackboard" "\
@@ -16,8 +16,8 @@ by John Gruber.
 
 ;;;***
 
-;;;### (autoloads (cheat) "cheat" "elpa-to-submit/cheat.el" (19512
-;;;;;;  61015))
+;;;### (autoloads (cheat) "cheat" "elpa-to-submit/cheat.el" (20100
+;;;;;;  32886))
 ;;; Generated autoloads from elpa-to-submit/cheat.el
 
 (autoload 'cheat "cheat" "\
@@ -31,7 +31,7 @@ as a string instead.
 ;;;***
 
 ;;;### (autoloads (cperl-perldoc-at-point cperl-perldoc cperl-mode)
-;;;;;;  "cperl-mode" "elpa-to-submit/cperl-mode.el" (19512 61015))
+;;;;;;  "cperl-mode" "elpa-to-submit/cperl-mode.el" (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/cperl-mode.el
 
 (fset 'perl-mode 'cperl-mode)
@@ -228,7 +228,7 @@ Run a `perldoc' on the word around point.
 ;;;***
 
 ;;;### (autoloads (erc-highlight-nicknames) "erc-highlight-nicknames"
-;;;;;;  "elpa-to-submit/erc-highlight-nicknames.el" (19512 61015))
+;;;;;;  "elpa-to-submit/erc-highlight-nicknames.el" (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/erc-highlight-nicknames.el
 
 (autoload 'erc-highlight-nicknames "erc-highlight-nicknames" "\
@@ -241,7 +241,7 @@ color (#rrrrggggbbbb).
 ;;;***
 
 ;;;### (autoloads (espresso-mode) "espresso" "elpa-to-submit/espresso.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/espresso.el
 
 (autoload 'espresso-mode "espresso" "\
@@ -255,9 +255,131 @@ Key bindings:
 
 ;;;***
 
+;;;### (autoloads (hexrgb-blue hexrgb-green hexrgb-red hexrgb-value
+;;;;;;  hexrgb-saturation hexrgb-hue hexrgb-complement hexrgb-read-color
+;;;;;;  hexrgb-canonicalize-defined-colors-flag) "hexrgb" "elpa-to-submit/hexrgb.el"
+;;;;;;  (20100 34554))
+;;; Generated autoloads from elpa-to-submit/hexrgb.el
+
+(eval-and-compile (defun hexrgb-canonicalize-defined-colors (list) "Copy of LIST with color names canonicalized.\nLIST is a list of color names (strings).\nCanonical names are lowercase, with no whitespace.\nThere are no duplicate names." (let ((tail list) this new) (while tail (setq this (car tail) this (hexrgb-delete-whitespace-from-string (downcase this) 0 (length this))) (unless (member this new) (push this new)) (pop tail)) (nreverse new))) (defun hexrgb-delete-whitespace-from-string (string &optional from to) "Remove whitespace from substring of STRING from FROM to TO.\nIf FROM is nil, then start at the beginning of STRING (FROM = 0).\nIf TO is nil, then end at the end of STRING (TO = length of STRING).\nFROM and TO are zero-based indexes into STRING.\nCharacter FROM is affected (possibly deleted).  Character TO is not." (setq from (or from 0) to (or to (length string))) (with-temp-buffer (insert string) (goto-char (+ from (point-min))) (let ((count from) char) (while (and (not (eobp)) (< count to)) (setq char (char-after)) (if (memq char '(32 9 10)) (delete-char 1) (forward-char 1)) (setq count (1+ count))) (buffer-string)))))
+
+(defconst hexrgb-defined-colors (eval-when-compile (and window-system (x-defined-colors))) "\
+List of all supported colors.")
+
+(defconst hexrgb-defined-colors-no-dups (eval-when-compile (and window-system (hexrgb-canonicalize-defined-colors (x-defined-colors)))) "\
+List of all supported color names, with no duplicates.
+Names are all lowercase, without any spaces.")
+
+(defconst hexrgb-defined-colors-alist (eval-when-compile (and window-system (mapcar #'list (x-defined-colors)))) "\
+Alist of all supported color names, for use in completion.
+See also `hexrgb-defined-colors-no-dups-alist', which is the same
+thing, but without any duplicates, such as \"light blue\" and
+\"LightBlue\".")
+
+(defconst hexrgb-defined-colors-no-dups-alist (eval-when-compile (and window-system (mapcar #'list (hexrgb-canonicalize-defined-colors (x-defined-colors))))) "\
+Alist of all supported color names, with no duplicates, for completion.
+Names are all lowercase, without any spaces.")
+
+(defvar hexrgb-canonicalize-defined-colors-flag t "\
+*Non-nil means remove duplicate color names.
+Names are considered duplicates if they are the same when abstracting
+from whitespace and letter case.")
+
+(custom-autoload 'hexrgb-canonicalize-defined-colors-flag "hexrgb" t)
+
+(autoload 'hexrgb-read-color "hexrgb" "\
+Read a color name or RGB hex value: #RRRRGGGGBBBB.
+Completion is available for color names, but not for RGB hex strings.
+If you input an RGB hex string, it must have the form #XXXXXXXXXXXX or
+XXXXXXXXXXXX, where each X is a hex digit.  The number of Xs must be a
+multiple of 3, with the same number of Xs for each of red, green, and
+blue.  The order is red, green, blue.
+
+Color names that are normally considered equivalent are canonicalized:
+They are lowercased, whitespace is removed, and duplicates are
+eliminated.  E.g. \"LightBlue\" and \"light blue\" are both replaced
+by \"lightblue\".  If you do not want this behavior, but want to
+choose names that might contain whitespace or uppercase letters, then
+customize option `hexrgb-canonicalize-defined-colors-flag' to nil.
+
+In addition to standard color names and RGB hex values, the following
+are available as color candidates.  In each case, the corresponding
+color is used.
+
+* `*copied foreground*'  - last copied foreground, if available
+* `*copied background*'  - last copied background, if available
+* `*mouse-2 foreground*' - foreground where you click `mouse-2'
+* `*mouse-2 background*' - background where you click `mouse-2'
+* `*point foreground*'   - foreground under the cursor
+* `*point background*'   - background under the cursor
+
+\(You can copy a color using eyedropper commands such as
+`eyedrop-pick-foreground-at-mouse'.)
+
+Checks input to be sure it represents a valid color.  If not, raises
+an error (but see exception for empty input with non-nil
+ALLOW-EMPTY-NAME-P).
+
+Interactively, or with optional arg CONVERT-TO-RGB-P non-nil, converts
+an input color name to an RGB hex string.  Returns the RGB hex string.
+
+Optional arg ALLOW-EMPTY-NAME-P controls what happens if you enter an
+empty color name (that is, you just hit `RET').  If non-nil, then
+`hexrgb-read-color' returns an empty color name, \"\".  If nil, then
+it raises an error.  Programs must test for \"\" if ALLOW-EMPTY-NAME-P
+is non-nil.  They can then perform an appropriate action in case of
+empty input.
+
+Optional arg PROMPT is the prompt.  Nil means use a default prompt.
+
+\(fn &optional CONVERT-TO-RGB-P ALLOW-EMPTY-NAME-P PROMPT)" t nil)
+
+(autoload 'hexrgb-complement "hexrgb" "\
+Return the color that is the complement of COLOR.
+
+\(fn COLOR)" t nil)
+
+(autoload 'hexrgb-hue "hexrgb" "\
+Return the hue component of COLOR, in range 0 to 1 inclusive.
+COLOR is a color name or hex RGB string that starts with \"#\".
+
+\(fn COLOR)" t nil)
+
+(autoload 'hexrgb-saturation "hexrgb" "\
+Return the saturation component of COLOR, in range 0 to 1 inclusive.
+COLOR is a color name or hex RGB string that starts with \"#\".
+
+\(fn COLOR)" t nil)
+
+(autoload 'hexrgb-value "hexrgb" "\
+Return the value component of COLOR, in range 0 to 1 inclusive.
+COLOR is a color name or hex RGB string that starts with \"#\".
+
+\(fn COLOR)" t nil)
+
+(autoload 'hexrgb-red "hexrgb" "\
+Return the red component of COLOR, in range 0 to 1 inclusive.
+COLOR is a color name or hex RGB string that starts with \"#\".
+
+\(fn COLOR)" t nil)
+
+(autoload 'hexrgb-green "hexrgb" "\
+Return the green component of COLOR, in range 0 to 1 inclusive.
+COLOR is a color name or hex RGB string that starts with \"#\".
+
+\(fn COLOR)" t nil)
+
+(autoload 'hexrgb-blue "hexrgb" "\
+Return the blue component of COLOR, in range 0 to 1 inclusive.
+COLOR is a color name or hex RGB string that starts with \"#\".
+
+\(fn COLOR)" t nil)
+
+;;;***
+
 ;;;### (autoloads (htmlize-many-files-dired htmlize-many-files htmlize-file
 ;;;;;;  htmlize-region htmlize-buffer) "htmlize" "elpa-to-submit/htmlize.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/htmlize.el
 
 (autoload 'htmlize-buffer "htmlize" "\
@@ -323,7 +445,7 @@ HTMLize dired-marked files.
 ;;;***
 
 ;;;### (autoloads (javadoc-lookup) "javadoc-help" "elpa-to-submit/javadoc-help.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/javadoc-help.el
 
 (autoload 'javadoc-lookup "javadoc-help" "\
@@ -333,8 +455,20 @@ Look up Java class in Javadoc.
 
 ;;;***
 
+;;;### (autoloads (js2-mode) "js2" "elpa-to-submit/js2.el" (20100
+;;;;;;  32886))
+;;; Generated autoloads from elpa-to-submit/js2.el
+ (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+(autoload 'js2-mode "js2" "\
+Major mode for editing JavaScript code.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (markdown-mode) "markdown-mode" "elpa-to-submit/markdown-mode.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/markdown-mode.el
 
 (autoload 'markdown-mode "markdown-mode" "\
@@ -349,7 +483,7 @@ Major mode for editing Markdown files.
 ;;;***
 
 ;;;### (autoloads (moz-minor-mode) "moz" "elpa-to-submit/moz.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/moz.el
 
 (autoload 'moz-minor-mode "moz" "\
@@ -372,7 +506,7 @@ started as needed).
 ;;;### (autoloads (oddmuse-kill-url oddmuse-browse-this-page oddmuse-browse-page
 ;;;;;;  emacswiki-post oddmuse-insert-pagename oddmuse-revert oddmuse-post
 ;;;;;;  oddmuse-follow oddmuse-edit oddmuse-toggle-minor) "oddmuse"
-;;;;;;  "elpa-to-submit/oddmuse.el" (19512 61015))
+;;;;;;  "elpa-to-submit/oddmuse.el" (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/oddmuse.el
 
 (autoload 'oddmuse-toggle-minor "oddmuse" "\
@@ -439,7 +573,7 @@ Make the URL of current oddmuse page the latest kill in the kill ring.
 ;;;***
 
 ;;;### (autoloads (paredit-mode) "paredit" "elpa-to-submit/paredit.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/paredit.el
 
 (autoload 'paredit-mode "paredit" "\
@@ -456,7 +590,7 @@ Paredit behaves badly if parentheses are imbalanced, so exercise
 ;;;***
 
 ;;;### (autoloads (pcomplete/rake) "pcmpl-rake" "elpa-to-submit/pcmpl-rake.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/pcmpl-rake.el
 
 (autoload 'pcomplete/rake "pcmpl-rake" "\
@@ -467,7 +601,7 @@ Completion rules for the `ssh' command.
 ;;;***
 
 ;;;### (autoloads (perl-find-file perldoc) "perl-find-library" "elpa-to-submit/perl-find-library.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/perl-find-library.el
 
 (autoload 'perldoc "perl-find-library" "\
@@ -484,7 +618,7 @@ Find a perl library by module name
 ;;;***
 
 ;;;### (autoloads (pod-mode) "pod-mode" "elpa-to-submit/pod-mode.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/pod-mode.el
 
 (autoload 'pod-mode "pod-mode" "\
@@ -495,7 +629,7 @@ Major mode for editing POD files (Plain Old Documentation for Perl).
 ;;;***
 
 ;;;### (autoloads (rainbow-delimiters-mode) "rainbow-delimiters"
-;;;;;;  "elpa-to-submit/rainbow-delimiters.el" (20072 31119))
+;;;;;;  "elpa-to-submit/rainbow-delimiters.el" (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/rainbow-delimiters.el
 
 (autoload 'rainbow-delimiters-mode "rainbow-delimiters" "\
@@ -505,7 +639,7 @@ Color nested parentheses, brackets, and braces according to their depth.
 
 ;;;***
 
-;;;### (autoloads (ri) "ri" "elpa-to-submit/ri.el" (19512 61015))
+;;;### (autoloads (ri) "ri" "elpa-to-submit/ri.el" (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/ri.el
 
 (autoload 'ri "ri" "\
@@ -516,7 +650,7 @@ Look up Ruby documentation.
 ;;;***
 
 ;;;### (autoloads (ruby-electric-mode) "ruby-electric" "elpa-to-submit/ruby-electric.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/ruby-electric.el
 
 (autoload 'ruby-electric-mode "ruby-electric" "\
@@ -537,7 +671,7 @@ strings. Note that you must have Font Lock enabled.
 ;;;***
 
 ;;;### (autoloads (scpaste-region scpaste) "scpaste" "elpa-to-submit/scpaste.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/scpaste.el
 
 (autoload 'scpaste "scpaste" "\
@@ -553,7 +687,7 @@ Paste the current region via `scpaste'.
 ;;;***
 
 ;;;### (autoloads (textile-mode) "textile-mode" "elpa-to-submit/textile-mode.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/textile-mode.el
 
 (autoload 'textile-mode "textile-mode" "\
@@ -566,7 +700,7 @@ A major mode for editing textile files.
 ;;;***
 
 ;;;### (autoloads (tt-mode) "tt-mode" "elpa-to-submit/tt-mode.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/tt-mode.el
 
 (autoload 'tt-mode "tt-mode" "\
@@ -577,7 +711,7 @@ Major mode for editing Template Toolkit files
 ;;;***
 
 ;;;### (autoloads (color-theme-twilight) "twilight" "elpa-to-submit/twilight.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/twilight.el
 
 (autoload 'color-theme-twilight "twilight" "\
@@ -588,7 +722,7 @@ Color theme by Marcus Crafter, based off the TextMate Twilight theme, created 20
 ;;;***
 
 ;;;### (autoloads (color-theme-zenburn) "zenburn" "elpa-to-submit/zenburn.el"
-;;;;;;  (19512 61015))
+;;;;;;  (20100 32886))
 ;;; Generated autoloads from elpa-to-submit/zenburn.el
 
 (autoload 'color-theme-zenburn "zenburn" "\
@@ -600,9 +734,10 @@ Just some alien fruit salad to keep you in the zone.
 
 ;;;***
 
-;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/edit-server.el"
+;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/custom-jabber-settings.el"
+;;;;;;  "elpa-to-submit/custom-look.el" "elpa-to-submit/edit-server.el"
 ;;;;;;  "elpa-to-submit/eshell-vc.el" "elpa-to-submit/notify.el")
-;;;;;;  (20072 31238 487235))
+;;;;;;  (20100 34589 389606))
 
 ;;;***
 
