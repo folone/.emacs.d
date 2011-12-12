@@ -193,3 +193,7 @@
 ;; Line numbers
 (require 'linum)
 (global-linum-mode 1)
+
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+(require 'roy-mode)
