@@ -829,14 +829,6 @@ Look up Java class in Javadoc.
 
 ;;;***
 
-<<<<<<< Updated upstream
-;;;### (autoloads (js2-mode) "js2" "elpa-to-submit/js2.el" (20100
-;;;;;;  32886))
-=======
-;;;### (autoloads (js2-mode) "js2" "elpa-to-submit/js2.el" (20126
-;;;;;;  34293))
->>>>>>> Stashed changes
-;;; Generated autoloads from elpa-to-submit/js2.el
  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (autoload 'js2-mode "js2" "\
