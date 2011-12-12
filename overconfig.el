@@ -197,3 +197,5 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 (require 'roy-mode)
+
+(eval-after-load "color-theme" '(color-theme-blackboard))
