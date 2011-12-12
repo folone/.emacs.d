@@ -1,3 +1,6 @@
 [submodule "nyan-mode"]
 	path = nyan-mode
 	url = git@github.com:folone/nyan-mode.git
+[submodule "elpa-to-submit/roy-mode"]
+	path = elpa-to-submit/roy-mode
+	url = git@github.com:folone/roy-mode.git
