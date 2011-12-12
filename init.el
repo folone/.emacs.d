@@ -29,6 +29,7 @@
 (add-to-list 'load-path (concat dotfiles-dir "/emacs-jabber"))
 
 (add-to-list 'load-path (concat dotfiles-dir "/haskellmode-emacs"))
+(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/roy-mode"))
 
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
