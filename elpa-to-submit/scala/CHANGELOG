@@ -1,0 +1,10 @@
+Indents correctly for 
+ - multiline trait,class and object templates.
+ - bracketless lines after a case in a match or catch block.
+ - two line def or val without brackets.
+ - bracketless anonymous functions i.e.
+    { x =>
+      ...
+      ...
+    }
+    

@@ -378,7 +378,7 @@ COLOR is a color name or hex RGB string that starts with \"#\".
 ;;;***
 
 ;;;### (autoloads (color-theme-blackboard) "blackboard" "elpa-to-submit/blackboard.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/blackboard.el
 
 (autoload 'color-theme-blackboard "blackboard" "\
@@ -390,8 +390,8 @@ by John Gruber.
 
 ;;;***
 
-;;;### (autoloads (cheat) "cheat" "elpa-to-submit/cheat.el" (20100
-;;;;;;  32886))
+;;;### (autoloads (cheat) "cheat" "elpa-to-submit/cheat.el" (20197
+;;;;;;  59629))
 ;;; Generated autoloads from elpa-to-submit/cheat.el
 
 (autoload 'cheat "cheat" "\
@@ -405,7 +405,7 @@ as a string instead.
 ;;;***
 
 ;;;### (autoloads (cperl-perldoc-at-point cperl-perldoc cperl-mode)
-;;;;;;  "cperl-mode" "elpa-to-submit/cperl-mode.el" (20100 32886))
+;;;;;;  "cperl-mode" "elpa-to-submit/cperl-mode.el" (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/cperl-mode.el
 
 (fset 'perl-mode 'cperl-mode)
@@ -602,7 +602,7 @@ Run a `perldoc' on the word around point.
 ;;;***
 
 ;;;### (autoloads (erc-highlight-nicknames) "erc-highlight-nicknames"
-;;;;;;  "elpa-to-submit/erc-highlight-nicknames.el" (20100 32886))
+;;;;;;  "elpa-to-submit/erc-highlight-nicknames.el" (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/erc-highlight-nicknames.el
 
 (autoload 'erc-highlight-nicknames "erc-highlight-nicknames" "\
@@ -615,7 +615,7 @@ color (#rrrrggggbbbb).
 ;;;***
 
 ;;;### (autoloads (espresso-mode) "espresso" "elpa-to-submit/espresso.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/espresso.el
 
 (autoload 'espresso-mode "espresso" "\
@@ -632,7 +632,7 @@ Key bindings:
 ;;;### (autoloads (hexrgb-blue hexrgb-green hexrgb-red hexrgb-value
 ;;;;;;  hexrgb-saturation hexrgb-hue hexrgb-complement hexrgb-read-color
 ;;;;;;  hexrgb-canonicalize-defined-colors-flag) "hexrgb" "elpa-to-submit/hexrgb.el"
-;;;;;;  (20100 34554))
+;;;;;;  (20161 6199))
 ;;; Generated autoloads from elpa-to-submit/hexrgb.el
 
 (eval-and-compile (defun hexrgb-canonicalize-defined-colors (list) "Copy of LIST with color names canonicalized.\nLIST is a list of color names (strings).\nCanonical names are lowercase, with no whitespace.\nThere are no duplicate names." (let ((tail list) this new) (while tail (setq this (car tail) this (hexrgb-delete-whitespace-from-string (downcase this) 0 (length this))) (unless (member this new) (push this new)) (pop tail)) (nreverse new))) (defun hexrgb-delete-whitespace-from-string (string &optional from to) "Remove whitespace from substring of STRING from FROM to TO.\nIf FROM is nil, then start at the beginning of STRING (FROM = 0).\nIf TO is nil, then end at the end of STRING (TO = length of STRING).\nFROM and TO are zero-based indexes into STRING.\nCharacter FROM is affected (possibly deleted).  Character TO is not." (setq from (or from 0) to (or to (length string))) (with-temp-buffer (insert string) (goto-char (+ from (point-min))) (let ((count from) char) (while (and (not (eobp)) (< count to)) (setq char (char-after)) (if (memq char '(32 9 10)) (delete-char 1) (forward-char 1)) (setq count (1+ count))) (buffer-string)))))
@@ -753,7 +753,7 @@ COLOR is a color name or hex RGB string that starts with \"#\".
 
 ;;;### (autoloads (htmlize-many-files-dired htmlize-many-files htmlize-file
 ;;;;;;  htmlize-region htmlize-buffer) "htmlize" "elpa-to-submit/htmlize.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/htmlize.el
 
 (autoload 'htmlize-buffer "htmlize" "\
@@ -854,7 +854,7 @@ Major mode for editing Markdown files.
 ;;;***
 
 ;;;### (autoloads (javadoc-lookup) "javadoc-help" "elpa-to-submit/javadoc-help.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/javadoc-help.el
 
 (autoload 'javadoc-lookup "javadoc-help" "\
@@ -877,7 +877,7 @@ Major mode for editing JavaScript code.
 ;;;***
 
 ;;;### (autoloads (markdown-mode) "markdown-mode" "elpa-to-submit/markdown-mode.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/markdown-mode.el
 
 (autoload 'markdown-mode "markdown-mode" "\
@@ -892,7 +892,7 @@ Major mode for editing Markdown files.
 ;;;***
 
 ;;;### (autoloads (moz-minor-mode) "moz" "elpa-to-submit/moz.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/moz.el
 
 (autoload 'moz-minor-mode "moz" "\
@@ -915,7 +915,7 @@ started as needed).
 ;;;### (autoloads (oddmuse-kill-url oddmuse-browse-this-page oddmuse-browse-page
 ;;;;;;  emacswiki-post oddmuse-insert-pagename oddmuse-revert oddmuse-post
 ;;;;;;  oddmuse-follow oddmuse-edit oddmuse-toggle-minor) "oddmuse"
-;;;;;;  "elpa-to-submit/oddmuse.el" (20100 32886))
+;;;;;;  "elpa-to-submit/oddmuse.el" (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/oddmuse.el
 
 (autoload 'oddmuse-toggle-minor "oddmuse" "\
@@ -1010,7 +1010,7 @@ Completion rules for the `ssh' command.
 ;;;***
 
 ;;;### (autoloads (paredit-mode) "paredit" "elpa-to-submit/paredit.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/paredit.el
 
 (autoload 'paredit-mode "paredit" "\
@@ -1027,7 +1027,7 @@ Paredit behaves badly if parentheses are imbalanced, so exercise
 ;;;***
 
 ;;;### (autoloads (pcomplete/rake) "pcmpl-rake" "elpa-to-submit/pcmpl-rake.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/pcmpl-rake.el
 
 (autoload 'pcomplete/rake "pcmpl-rake" "\
@@ -1038,7 +1038,7 @@ Completion rules for the `ssh' command.
 ;;;***
 
 ;;;### (autoloads (pod-mode) "pod-mode" "elpa-to-submit/pod-mode.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/pod-mode.el
 
 (autoload 'pod-mode "pod-mode" "\
@@ -1059,7 +1059,7 @@ Color nested parentheses, brackets, and braces according to their depth.
 
 ;;;***
 
-;;;### (autoloads (ri) "ri" "elpa-to-submit/ri.el" (20100 32886))
+;;;### (autoloads (ri) "ri" "elpa-to-submit/ri.el" (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/ri.el
 
 (autoload 'ri "ri" "\
@@ -1070,7 +1070,7 @@ Look up Ruby documentation.
 ;;;***
 
 ;;;### (autoloads (ruby-electric-mode) "ruby-electric" "elpa-to-submit/ruby-electric.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/ruby-electric.el
 
 (autoload 'ruby-electric-mode "ruby-electric" "\
@@ -1091,7 +1091,7 @@ strings. Note that you must have Font Lock enabled.
 ;;;***
 
 ;;;### (autoloads (scpaste-region scpaste) "scpaste" "elpa-to-submit/scpaste.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/scpaste.el
 
 (autoload 'scpaste "scpaste" "\
@@ -1107,7 +1107,7 @@ Paste the current region via `scpaste'.
 ;;;***
 
 ;;;### (autoloads (textile-mode) "textile-mode" "elpa-to-submit/textile-mode.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/textile-mode.el
 
 (autoload 'textile-mode "textile-mode" "\
@@ -1120,7 +1120,7 @@ A major mode for editing textile files.
 ;;;***
 
 ;;;### (autoloads (tt-mode) "tt-mode" "elpa-to-submit/tt-mode.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/tt-mode.el
 
 (autoload 'tt-mode "tt-mode" "\
@@ -1131,7 +1131,7 @@ Major mode for editing Template Toolkit files
 ;;;***
 
 ;;;### (autoloads (color-theme-twilight) "twilight" "elpa-to-submit/twilight.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/twilight.el
 
 (autoload 'color-theme-twilight "twilight" "\
@@ -1142,7 +1142,7 @@ Color theme by Marcus Crafter, based off the TextMate Twilight theme, created 20
 ;;;***
 
 ;;;### (autoloads (color-theme-zenburn) "zenburn" "elpa-to-submit/zenburn.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/zenburn.el
 
 (autoload 'color-theme-zenburn "zenburn" "\
@@ -1156,13 +1156,13 @@ Just some alien fruit salad to keep you in the zone.
 
 ;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/custom-jabber-settings.el"
 ;;;;;;  "elpa-to-submit/custom-look.el" "elpa-to-submit/edit-server.el"
-;;;;;;  "elpa-to-submit/eshell-vc.el" "elpa-to-submit/notify.el"
-;;;;;;  "elpa-to-submit/roy-mode.el") (20192 50628 398007))
+;;;;;;  "elpa-to-submit/erc-custom-setup.el" "elpa-to-submit/eshell-vc.el"
+;;;;;;  "elpa-to-submit/notify.el") (20216 19362 437774))
 
 ;;;***
 
 ;;;### (autoloads (perl-find-file perldoc) "perl-find-library" "elpa-to-submit/perl-find-library.el"
-;;;;;;  (20100 32886))
+;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/perl-find-library.el
 
 (autoload 'perldoc "perl-find-library" "\

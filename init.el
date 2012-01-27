@@ -31,6 +31,13 @@
 (add-to-list 'load-path (concat dotfiles-dir "/haskellmode-emacs"))
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/roy-mode"))
 
+;; Scala-stuff
+(add-to-list 'load-path (concat dotfiles-dir "/ensime/elisp"))
+(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scala"))
+(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/ecb"))
+(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scamacs"))
+(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/sbt"))
+
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))

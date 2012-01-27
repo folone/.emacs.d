@@ -1,0 +1,3 @@
+[submodule "ensime"]
+	path = ensime
+	url = git://github.com/aemoncannon/ensime.git

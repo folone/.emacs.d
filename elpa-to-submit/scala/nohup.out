@@ -1,0 +1,16 @@
+
+(firefox:8106): GLib-WARNING **: g_set_prgname() called multiple times
+*** NSPlugin Wrapper *** ERROR: NPP_Destroy() wait for reply: Connection reset by peer
+*** NSPlugin Wrapper *** ERROR: NPObject 0x7fdb1435c8f0 is no longer valid!
+
+(npviewer.bin:8399): Gdk-WARNING **: XID collision, trouble ahead
+
+(npviewer.bin:8399): Gdk-WARNING **: XID collision, trouble ahead
+
+(npviewer.bin:8399): Gdk-WARNING **: XID collision, trouble ahead
+
+(npviewer.bin:8399): Gdk-WARNING **: XID collision, trouble ahead
+
+(npviewer.bin:8399): Gdk-WARNING **: XID collision, trouble ahead
+
+(npviewer.bin:8399): Gdk-WARNING **: XID collision, trouble ahead

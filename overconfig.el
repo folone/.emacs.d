@@ -135,12 +135,22 @@
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 
 ;; Load scala mode
-(add-to-list 'load-path (concat dotfiles-dir "/scala-mode"))
 (require 'scala-mode-auto)
 
 ;; Load ensime mode
-(add-to-list 'load-path (concat dotfiles-dir "/ensime/elisp"))
 (require 'ensime)
+
+;; This step causes the ensime-mode to be started whenever
+;; scala-mode is started for a buffer. You may have to customize this step
+;; if you're not using the standard scala mode.
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(setq exec-path (append exec-path (list "~/bin/scala-2.9.0.1/bin" )))
+
+(require 'ensime-ecb)
+(require 'ensime-layout-defs)
+(require 'sbt)
+
+(global-set-key [f12] 'ecb-toggle-ecb-windows)
 
 ;; Haskell mode
 (load "~/.emacs.d/haskellmode-emacs/haskell-site-file")
@@ -149,15 +159,6 @@
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 (setq haskell-program-name "ghci")
-
-;; This step causes the ensime-mode to be started whenever
-;; scala-mode is started for a buffer. You may have to customize this step
-;; if you're not using the standard scala mode.
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-(setq exec-path (append exec-path (list "~/bin/scala-2.9.0.1/bin" )))
-
-;; MINI HOWTO: 
-;; Open .scala file. M-x ensime (once per project)
 
 ;; Spaces for tabs
 (setq-default indent-tabs-mode nil)
@@ -223,6 +224,35 @@
 (reverse-input-method 'cyrillic-jcuken)
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+;; IRC chats
+;; TODO move to separate file
+(require 'erc)
+
+;; joining && autojoing
+;; make sure to use wildcards for e.g. freenode as the actual server
+;; name can be be a bit different, which would screw up autoconnect
+(erc-autojoin-mode t)
+(setq erc-autojoin-channels-alist
+      '((".*\\.freenode.net" "#haskell" "#scala")))
+
+;; check channels
+(erc-track-mode t)
+(setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
+                                "324" "329" "332" "333" "353" "477"))
+;; don't show any of this
+(setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
+
+(defun djcb-erc-start-or-switch ()
+  "Connect to ERC, or switch to last active buffer"
+  (interactive)
+  (if (get-buffer "irc.freenode.net:6667") ;; ERC already active?
+    (erc-track-switch-buffer 1) ;; yes: switch to last active
+    (when (y-or-n-p "Start ERC? ") ;; no: maybe start ERC
+      (erc :server "irc.freenode.net" :port 6667 :nick "folone" :password "**********" :full-name "Georgii Leontiev"))))
+
+;; switch to ERC with Ctrl+c e
+(global-set-key (kbd "C-c e") 'djcb-erc-start-or-switch) ;; ERC
 
 (require 'roy-mode)
 
