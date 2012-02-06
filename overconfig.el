@@ -257,3 +257,6 @@
 (require 'roy-mode)
 
 (eval-after-load "color-theme" '(color-theme-blackboard))
+
+;; minimap
+(require 'minimap)

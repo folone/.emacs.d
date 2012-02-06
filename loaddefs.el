@@ -891,6 +891,23 @@ Major mode for editing Markdown files.
 
 ;;;***
 
+;;;### (autoloads (minimap-kill minimap-create) "minimap" "elpa-to-submit/minimap.el"
+;;;;;;  (20271 50350))
+;;; Generated autoloads from elpa-to-submit/minimap.el
+
+(autoload 'minimap-create "minimap" "\
+Create a minimap sidebar for the current window.
+
+\(fn)" t nil)
+
+(autoload 'minimap-kill "minimap" "\
+Kill minimap for current buffer.
+Cancel the idle timer if no more minimaps are active.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (moz-minor-mode) "moz" "elpa-to-submit/moz.el"
 ;;;;;;  (20197 59629))
 ;;; Generated autoloads from elpa-to-submit/moz.el
@@ -1156,8 +1173,8 @@ Just some alien fruit salad to keep you in the zone.
 
 ;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/custom-jabber-settings.el"
 ;;;;;;  "elpa-to-submit/custom-look.el" "elpa-to-submit/edit-server.el"
-;;;;;;  "elpa-to-submit/erc-custom-setup.el" "elpa-to-submit/eshell-vc.el"
-;;;;;;  "elpa-to-submit/notify.el") (20216 19362 437774))
+;;;;;;  "elpa-to-submit/eshell-vc.el" "elpa-to-submit/notify.el")
+;;;;;;  (20271 50421 514038))
 
 ;;;***
 
