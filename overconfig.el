@@ -260,3 +260,20 @@
 
 ;; minimap
 (require 'minimap)
+;; TODO assign `toggle this feature` on some key.
+
+;; This function does some scala code prettifying.
+(defun prettify-scala-code ()
+  "Replace ascii with it's unicode counterparts."
+  (interactive)
+  (beginning-of-buffer)
+  (let ((replace-table (make-hash-table :test 'equal))
+          replaces)
+      (puthash "=>" "⇒" replace-table)
+      (puthash "<-" "←" replace-table)
+      (puthash "->" "→" replace-table)
+      (maphash (lambda (toreplace withreplace)
+                 (replace-string toreplace withreplace))
+               replace-table)
+      replaces))
+(global-set-key (kbd "C-c p") 'prettify-scala-code)
