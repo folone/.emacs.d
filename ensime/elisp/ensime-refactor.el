@@ -51,7 +51,7 @@
 	 (message "Organized."))
 
 	(t
-	 (ensime-refactor-perform
+	 (ensime-refactor-prepare
 	  'organizeImports
 	  `(file ,buffer-file-name)))))
 
@@ -80,7 +80,7 @@
 	       (old-name (plist-get sym :name))
 	       (name (or new-name
 			 (read-string (format "Rename '%s' to: " old-name)))))
-	  (ensime-refactor-perform
+	  (ensime-refactor-prepare
 	   'rename
 	   `(file ,buffer-file-name
 		  start ,(- start ensime-ch-fix)
@@ -96,7 +96,7 @@
     (if sym
 	(let* ((start (plist-get sym :start))
 	       (end (plist-get sym :end)))
-	  (ensime-refactor-perform
+	  (ensime-refactor-prepare
 	   'inlineLocal
 	   `(file ,buffer-file-name
 		  start ,(- start ensime-ch-fix)
@@ -108,7 +108,7 @@
   "Extract a range of code into a method."
   (interactive)
   (let* ((name (read-string "Name of method: ")))
-    (ensime-refactor-perform
+    (ensime-refactor-prepare
      'extractMethod
      `(file ,buffer-file-name
 	    start ,(- (mark) ensime-ch-fix)
@@ -120,7 +120,7 @@
   "Extract a range of code into a val."
   (interactive)
   (let* ((name (read-string "Name of local value: ")))
-    (ensime-refactor-perform
+    (ensime-refactor-prepare
      'extractLocal
      `(file ,buffer-file-name
 	    start ,(- (mark) ensime-ch-fix)
@@ -128,7 +128,7 @@
 	    name ,name))))
 
 (defun ensime-refactor-add-import (&optional qual-name)
-  "Rename a symbol, project-wide."
+  "Insert import statement."
   (interactive)
   (let ((sym (ensime-sym-at-point)))
     (if sym
@@ -137,7 +137,7 @@
 	       (qualified-name
 		(or qual-name
 		    (read-string "Qualified of type to import: "))))
-	  (let ((result (ensime-refactor-perform
+	  (let ((result (ensime-refactor-prepare
 			 'addImport
 			 `(file ,buffer-file-name
 				start ,(- start ensime-ch-fix)
@@ -148,23 +148,23 @@
       (message "Please place cursor on a symbol."))))
 
 
-(defun ensime-refactor-perform
+(defun ensime-refactor-prepare
   (refactor-type params &optional non-interactive blocking)
   (if (buffer-modified-p) (ensime-write-buffer nil t))
   (incf ensime-refactor-id-counter)
   (if (not blocking) (message "Please wait..."))
-  (ensime-rpc-refactor-perform
+  (ensime-rpc-refactor-prepare
    ensime-refactor-id-counter
    refactor-type
    params
    non-interactive
    (if non-interactive
        'ensime-refactor-handle-result
-     'ensime-refactor-perform-handler)
+     'ensime-refactor-prepare-handler)
    blocking
    ))
 
-(defun ensime-refactor-perform-handler (result)
+(defun ensime-refactor-prepare-handler (result)
   (let ((refactor-type (plist-get result :refactor-type))
 	(status (plist-get result :status))
 	(id (plist-get result :procedure-id))

@@ -37,6 +37,9 @@
 (defvar ensime-search-target-window nil
   "Window to which the ensime-search is applied to.")
 
+(defvar ensime-search-originating-buffer nil
+  "Window from which the search was initiated.")
+
 (defvar ensime-search-window-config nil
   "Old window configuration.")
 
@@ -66,6 +69,7 @@
     (define-key map "\C-q" 'ensime-search-quit)
     (define-key map "\C-n" 'ensime-search-next-match)
     (define-key map "\C-p" 'ensime-search-prev-match)
+    (define-key map "\C-i" 'ensime-search-insert-import-of-current-result)
     (define-key map [(return)] 'ensime-search-choose-current-result)
     map)
   "Keymap used by ensime-search.")
@@ -75,6 +79,7 @@
     (define-key map "q" 'ensime-search-quit)
     (define-key map "\C-n" 'ensime-search-next-match)
     (define-key map "\C-p" 'ensime-search-prev-match)
+    (define-key map "\C-i" 'ensime-search-insert-import-of-current-result)
     (define-key map [(return)] 'ensime-search-choose-current-result)
     map)
   "Keymap used by ensime-search.")
@@ -127,6 +132,9 @@
 	    (memq major-mode '(ensime-search-mode)))
 
        (message "Already in ensime-search buffer")
+
+     (when buffer-file-name
+       (setq ensime-search-originating-buffer (current-buffer)))
 
      (setq ensime-search-window-config (current-window-configuration))
 
@@ -231,6 +239,18 @@
 	)))
 
 
+(defun ensime-search-insert-import-of-current-result ()
+  "Insert an import statement for the currently selected type."
+  (interactive)
+  (when (and ensime-search-current-selected-result
+	     ensime-search-originating-buffer)
+    (let* ((item (ensime-search-result-data 
+		  ensime-search-current-selected-result))
+	   (qualified-name (ensime-search-sym-name item)))
+      (with-current-buffer ensime-search-originating-buffer
+	(insert (format "import %s\n" qualified-name))))))
+
+
 (defun ensime-search-prev-match ()
   "Go to previous match in the ensime-search target window."
   (interactive)
@@ -253,14 +273,23 @@
 
 
 
+(defvar ensime-search-selection-overlay nil
+  "Overlay that highlights the currently selected search result.")
+
 (defun ensime-search-update-result-selection ()
   "Move cursor to current result selection in target buffer."
-  (if (ensime-search-result-p ensime-search-current-selected-result)
-      (with-current-buffer ensime-search-target-buffer
-	(let ((target-point (ensime-search-result-summary-start
-			     ensime-search-current-selected-result)))
-	  (set-window-point ensime-search-target-window target-point)
-	  ))))
+  (when (and ensime-search-current-results
+	     ensime-search-current-selected-result)
+    (with-current-buffer ensime-search-target-buffer
+      (when ensime-search-selection-overlay
+	(delete-overlay ensime-search-selection-overlay))
+      (let ((target-point (ensime-search-result-summary-start
+			   ensime-search-current-selected-result)))
+	(save-excursion
+	  (goto-char target-point)
+	  (setq ensime-search-selection-overlay 
+		(ensime-make-overlay target-point (point-at-eol) nil 'ensime-warnline))))
+      )))
 
 
 (defun ensime-search-auto-update (beg end lenold &optional force)
@@ -364,7 +393,8 @@
     (ensime-insert-with-face
      (concat "Enter space-separated keywords. "
 	     "C-n, C-p to navigate. "
-	     "RETURN to choose. C-q to quit.")
+	     "C-i to insert import statement. "
+	     "RETURN to goto source location. C-q to quit.")
      'font-lock-constant-face)
     (insert "\n\n")
 

@@ -14,15 +14,17 @@ the ENhanced Scala Interaction Mode for Emacs
 - Browse packages
 - Completion for variables, methods, constructors, etc.
 - Incrementally search through classpath symbols
-- Find references to a symbol
+- Find all references to a symbol
 - Jump to symbol definitions.
+- Semantic Highlighting
 - Automated Refactorings (rename, organize imports, extract method)
 - Source Formatting
 - AST-based selection
-- Supports sbt,Maven,Ivy projects
+- Supports sbt7,10,11
+- Supports Maven,Ivy build descriptions
 - Embedded sbt shell
 - REPL
-- Debugger
+- Debug support
 
 
 ## Demo Videos
@@ -37,28 +39,30 @@ the ENhanced Scala Interaction Mode for Emacs
 ## System Requirements
 
 - Emacs 22 or later.
-- Unix-like OS or Windows.
+- Linux, Mac OSX, Windows
 - Java Runtime
-- A Scala 2.8.1 compatible project. 
+- A Scala 2.8.x or 2.9.x project
 
 
 ## Documentation
+
 - [The ENSIME User Manual](http://aemon.com/file_dump/ensime_manual.html)
 
 
-## Quick Start
+## Getting Started
 
 __1) Install scala-mode__
 
-ENSIME is designed to compliment scala-mode (or any other scala language mode). scala-mode can be found in the Scala distribution under ./misc/scala-tool-support/emacs/. The rest of the steps assume your scala-mode is installed and working correctly.
+Although it's not required, ENSIME is designed to compliment scala-mode. scala-mode can be found in the Scala distribution under ./misc/scala-tool-support/emacs/.
 
-__2) Install ensime-mode__
+
+__2) Install the ENSIME Server__
 
 Download the ENSIME distribution from the github [downloads page](http://github.com/aemoncannon/ensime/downloads). Unpack the ENSIME distribution into a directory of your choosing. 
 
 Add the following lines to your .emacs file:
 
-    ;; Load the ensime lisp code...
+    ;; load the ensime lisp code...
     (add-to-list 'load-path "ENSIME_ROOT/elisp/")
     (require 'ensime)
 
@@ -67,24 +71,23 @@ Add the following lines to your .emacs file:
     ;; if you're not using the standard scala mode.
     (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-    ;; MINI HOWTO: 
-    ;; Open .scala file. M-x ensime (once per project)
 
+__3) If you are using sbt, install the ENSIME Sbt Plugin (otherwise, see the [manual](http://aemon.com/file_dump/ensime_manual.html#tth_sEc3.1.2))__
 
-__3) Verify Permissions__
+Add the following lines to your project/plugins.sbt file:
 
-Verify that the startup script (usually bin/server.sh) has executable permissions.
+    addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "VERSION")
 
+Replace VERSION with the latest version of the plugin, available on [the plugin page](https://github.com/aemoncannon/ensime-sbt-cmd).  Then, from an sbt shell, generate your ENSIME project:
+    
+    ensime generate
 
-__4) Create Project__
-
-In Emacs, execute M-x ensime-config-gen. Follow directions in the mini-buffer to create a .ensime file for your project.. 
+You should now have a .ensime file in the root of your project. There's no need to edit this file manually as you can now specify ENSIME settings directly from your sbt build file. Check the [manual](http://aemon.com/file_dump/ensime_manual.html#tth_sEc3.1.1) for details.
 
 
 __5) Start ENSIME__
 
-Execute M-x ensime
-You only need to do this once per project.
+From inside Emacs, execute M-x ensime
 
 
 ## Developer Quick Start
@@ -96,7 +99,6 @@ After cloning, and before you can run ENSIME, you must create the distribution d
 The work-flow I use when hacking ENSIME:
 
 - Edit source files
-- 'sbt update'
-- 'sbt dist'
+- 'sbt stage'
 - Stop existing ENSIME server by killing *inferior-ensime-server* buffer
 - Restart ENSIME with M-x ensime
