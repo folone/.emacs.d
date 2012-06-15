@@ -187,6 +187,7 @@
 ;; In every buffer, the line which contains the cursor will be fully
 ;; highlighted
 (global-hl-line-mode 1)
+(set-face-background 'hl-line "darkseagreen") 
 
 ;; Nyan mode
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/nyan-mode"))
