@@ -16,6 +16,7 @@
 
 ;; Set font
 (set-default-font "Monaco-8")
+(set-face-attribute 'default nil :height 80)
 
 ;; Set default browser to chromium
 (setq browse-url-browser-function 'browse-url-generic
