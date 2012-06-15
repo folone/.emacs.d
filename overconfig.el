@@ -152,6 +152,12 @@
 
 (global-set-key [f12] 'ecb-toggle-ecb-windows)
 
+;; Scalaz unicode hook
+(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scalaz-unicode-input-method"))
+(require 'scalaz-unicode-input-method)
+(add-hook 'scala-mode-hook
+          (lambda () (set-input-method "scalaz-unicode")))
+
 ;; Haskell mode
 (load "~/.emacs.d/haskellmode-emacs/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)

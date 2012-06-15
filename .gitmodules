@@ -4,3 +4,6 @@
 [submodule "elpa-to-submit/roy-mode"]
 	path = elpa-to-submit/roy-mode
 	url = git@github.com:folone/roy-mode.git
+[submodule "elpa-to-submit/emacs-scalaz-unicode-input-method"]
+	path = elpa-to-submit/scalaz-unicode-input-method
+	url = https://github.com/folone/emacs-scalaz-unicode-input-method.git
