@@ -103,10 +103,6 @@
      ;;(font . "-GURSoutline-Courier New-normal-r-normal-normal-11-82-96-96-c-70-iso8859-1")
      (left . 80))))
 
-;; Custom view
-(require 'custom-look)
-(custom-look)
-
 ;; Setting initial frame size
 (defun set-frame-size-according-to-resolution ()
   (interactive)
