@@ -1,17 +1,10 @@
-# Emacs Starter Kit
+# My Emacs config
+## Initially forked from [emacs starter kit](http://github.com/technomancy/emacs-starter-kit/)
 
-The Starter Kit should provide a saner set of defaults than you get
-normally with Emacs. It was originally intended for beginners, but it
-should provide a reasonable working environment for anyone using Emacs
-for dynamic languages. It also bundles a number of useful libraries
-that are not distributed with Emacs for various reasons.
-
-The latest version is at http://github.com/technomancy/emacs-starter-kit/
-
-## Learning
+### Learning
 
 This won't teach you Emacs, but it'll make it easier to get
-comfortable. To access the tutorial, press control-h followed by t.
+comfortable. To access the tutorial, press C-h t.
 
 You may also find the [PeepCode Meet Emacs
 screencast](http://peepcode.com/products/meet-emacs) helpful. The
@@ -19,11 +12,10 @@ screencast](http://peepcode.com/products/meet-emacs) helpful. The
 
 ## Installation
 
-1. Install GNU Emacs (at least version 22, 23 is preferred)
-   Use your package manager if you have one.
-   Otherwise Mac users may get [some prebuilt binaries](http://emacsformacosx.com/), and
-   Windows users can get them [from GNU](http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-23.1-bin-i386.zip).
-2. Move the directory containing this file to ~/.emacs.d
+1. Install GNU Emacs 24
+2. Clone this repo. Don't forget to `$ git submodule update`, as it
+   uses some modes, available via github.
+2. Rename this directory to ~/.emacs.d
    (If you already have a directory at ~/.emacs.d move it out of the
    way and put this there instead.)
 3. Launch Emacs!
@@ -44,8 +36,10 @@ is not present.
 
 ## Structure
 
-The init.el file is where everything begins. It's the first file to
-get loaded. The starter-kit-* files provide what I consider to be
+The init.el and overconfig.el files is where everything
+begins. init.el is the first file to get loaded. overconfig.el, on the
+other hand, is a file, intended for a user to customize.
+The starter-kit-* files provide what is considered to be
 better defaults, both for different programming languages and for
 built-in Emacs features like bindings or registers.
 
@@ -115,8 +109,6 @@ works. Grep the project for TODO for other things.
 
 Files are licensed under the same license as Emacs unless otherwise
 specified. See the file COPYING for details.
-
-The latest version is at http://github.com/technomancy/emacs-starter-kit/
 
 On Unix, /home/$USER/.emacs.d, on windows Documents and Settings/%your
 user name%/Application Data
