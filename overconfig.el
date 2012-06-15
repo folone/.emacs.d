@@ -160,7 +160,8 @@
           (lambda () (set-input-method "scalaz-unicode")))
 
 ;; Haskell mode
-(load "~/.emacs.d/haskellmode-emacs/haskell-site-file")
+(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/haskell-mode"))
+(load "haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -171,7 +172,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; nxml-mode
-(load "nxml-mode/rng-auto.el")
+(load "elpa-to-submit/nxml-mode/rng-auto.el")
 (setq auto-mode-alist
         (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
 	      auto-mode-alist))

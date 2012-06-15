@@ -7,3 +7,9 @@
 [submodule "elpa-to-submit/emacs-scalaz-unicode-input-method"]
 	path = elpa-to-submit/scalaz-unicode-input-method
 	url = https://github.com/folone/emacs-scalaz-unicode-input-method.git
+[submodule "elpa-to-submit/haskell-mode"]
+	path = elpa-to-submit/haskell-mode
+	url = git://github.com/haskell/haskell-mode.git
+[submodule "elpa-to-submit/nxml-mode"]
+	path = elpa-to-submit/nxml-mode
+	url = git://github.com/likun5053/nxml-mode.git
