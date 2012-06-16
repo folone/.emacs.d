@@ -26,27 +26,24 @@
 (edit-server-start)
 
 ;; Jabber connection settings.
-;; This file should be of following format:
-;; (defun custom-jabber-settings ()
-;;  (custom-set-variables
-;;   '(jabber-account-list (quote
-;;                         (("name@gmail.com/emacs"
-;;                           (:password . "*******")
+  (custom-set-variables
+   '(jabber-account-list (quote
+                          (
+;;                           ("folone@gmail.com/emacs"
 ;;                       (:network-server . "talk.google.com")
 ;;                         (:port . 5223)
 ;;                         (:connection-type . ssl))
-;;                        ("name@jabber.ru/emacs"
-;;                         (:password . "*******")
-;;                         (:network-server . "jabber.ru"))
-;;                        )))
-;;   '(jabber-default-status "jabber.el")
-;;   '(jabber-history-enabled t)
-;;   '(jabber-use-global-history nil)
-;;   '(jabber-vcard-avatars-retrieve nil)))
+                        ("folone@jabber.ru/emacs"
+                         (:network-server . "jabber.ru"))
+                        )))
+   '(jabber-default-status "jabber.el")
+   '(jabber-history-enabled t)
+   '(jabber-use-global-history nil)
+   '(jabber-vcard-avatars-retrieve nil))
 ;;(provide 'custom-jabber-settings)
 (require 'jabber)
-(require 'custom-jabber-settings)
-(custom-jabber-settings)
+;;(require 'custom-jabber-settings)
+;;(custom-jabber-settings)
 
 ;; Notifying of new jabber.el messages.
 (defvar jabber-activity-jids-count 0)

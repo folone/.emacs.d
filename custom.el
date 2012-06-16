@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (tango-dark)))
  '(ecb-options-version "2.40")
+ '(jabber-account-list (quote (("folone@jabber.ru/emacs" (:network-server . "jabber.ru")))))
  '(jabber-default-status "jabber.el")
  '(jabber-history-enabled t)
  '(jabber-use-global-history nil)
