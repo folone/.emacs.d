@@ -864,12 +864,12 @@ Look up Java class in Javadoc.
 
 ;;;***
 
-;;;### (autoloads (js2-mode) "js2" "elpa-to-submit/js2.el" (20161
-;;;;;;  7918))
+;;;### (autoloads (js2-mode) "elpa-to-submit/js2" "elpa-to-submit/js2.el"
+;;;;;;  (20461 29425))
 ;;; Generated autoloads from elpa-to-submit/js2.el
  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-(autoload 'js2-mode "js2" "\
+(autoload 'js2-mode "elpa-to-submit/js2" "\
 Major mode for editing JavaScript code.
 
 \(fn)" t nil)
@@ -1172,10 +1172,8 @@ Just some alien fruit salad to keep you in the zone.
 ;;;***
 
 ;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/custom-jabber-settings.el"
-;;;;;;  "elpa-to-submit/custom-look.el" "elpa-to-submit/edit-server.el"
-;;;;;;  "elpa-to-submit/eshell-vc.el" "elpa-to-submit/notify.el"
-;;;;;;  "elpa-to-submit/quail-conv.el" "elpa-to-submit/scalaz-unicode-input-method.el")
-;;;;;;  (20441 62450 690186))
+;;;;;;  "elpa-to-submit/edit-server.el" "elpa-to-submit/eshell-vc.el"
+;;;;;;  "elpa-to-submit/notify.el") (20461 29512 990905))
 
 ;;;***
 

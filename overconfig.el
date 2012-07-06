@@ -15,7 +15,6 @@
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 ;; Set font
-(set-default-font "Monaco-8")
 (set-face-attribute 'default nil :height 80)
 
 ;; Set default browser to chromium
@@ -54,15 +53,15 @@
 (defun jabber-message-blink ()
   (let ((count (length jabber-activity-jids)))
     (unless (= jabber-activity-jids-count count)
-      (start-process-shell-command "blink" nil 
+      (start-process-shell-command "blink" nil
                                    "blink" (format "--numlockled --rate %s" count))
       (setq jabber-activity-jids-count count))))
 
 (add-hook 'jabber-activity-update-hook 'jabber-message-blink)
 
 ;; don't forget to disable blinking after disconnection
-(add-hook 'jabber-post-disconnect-hook 
-     (lambda () 
+(add-hook 'jabber-post-disconnect-hook
+     (lambda ()
        (jabber-autoaway-stop)
             (jabber-keepalive-stop)
        (start-process-shell-command "blink" nil "blink")))
@@ -92,9 +91,9 @@
 (define-key jabber-chat-mode-map [C-return] 'jabber-chat-buffer-send)
 
 ;; Open chats in their own frames (does not work)
-(setq 
-  special-display-regexps 
-  '(("jabber-chat" 
+(setq
+  special-display-regexps
+  '(("jabber-chat"
      (width . 80)
      (scroll-bar-width . 16)
      (height . 15)
@@ -118,7 +117,7 @@
     ;; from the screen height (for panels, menubars and
     ;; whatnot), then divide by the height of a char to
     ;; get the height we want
-    (add-to-list 'default-frame-alist 
+    (add-to-list 'default-frame-alist
                  (cons 'height 100)))))
 
 (set-frame-size-according-to-resolution)
@@ -177,7 +176,6 @@
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-
 ;; Show line-number in the mode line
 (line-number-mode 1)
 
@@ -187,7 +185,7 @@
 ;; In every buffer, the line which contains the cursor will be fully
 ;; highlighted
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "darkseagreen") 
+(set-face-background 'hl-line "darkseagreen")
 
 ;; Nyan mode
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/nyan-mode"))
@@ -195,8 +193,6 @@
 (nyan-mode 1)
 
 ;; Colourfull brackets
-(require 'rainbow-delimiters)
-;; Add hooks for modes where you want it enabled, for example:
 (add-hook 'scala-mode-hook 'rainbow-delimiters-mode)
 
 ;; Line numbers
