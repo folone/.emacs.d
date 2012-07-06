@@ -1173,7 +1173,7 @@ Just some alien fruit salad to keep you in the zone.
 
 ;;;### (autoloads nil nil ("elpa-to-submit/color-theme.el" "elpa-to-submit/custom-jabber-settings.el"
 ;;;;;;  "elpa-to-submit/edit-server.el" "elpa-to-submit/eshell-vc.el"
-;;;;;;  "elpa-to-submit/notify.el") (20461 29512 990905))
+;;;;;;  "elpa-to-submit/notify.el") (20443 64864 645871))
 
 ;;;***
 

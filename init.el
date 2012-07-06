@@ -33,8 +33,6 @@
 
 ;; Scala-stuff
 (add-to-list 'load-path (concat dotfiles-dir "/ensime/elisp"))
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scala"))
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/ecb"))
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scamacs"))
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/sbt"))
 
