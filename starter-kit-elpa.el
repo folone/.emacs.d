@@ -15,6 +15,7 @@
                                    'erc
                                    'ecb
                                    'nxml
+                                   'typopunct
                                    'rainbow-delimiters)
   "Libraries that should be installed by default.")
 

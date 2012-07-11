@@ -24,25 +24,8 @@
 (require 'edit-server)
 (edit-server-start)
 
-;; Jabber connection settings.
-  (custom-set-variables
-   '(jabber-account-list (quote
-                          (
-;;                           ("folone@gmail.com/emacs"
-;;                       (:network-server . "talk.google.com")
-;;                         (:port . 5223)
-;;                         (:connection-type . ssl))
-                        ("folone@jabber.ru/emacs"
-                         (:network-server . "jabber.ru"))
-                        )))
-   '(jabber-default-status "jabber.el")
-   '(jabber-history-enabled t)
-   '(jabber-use-global-history nil)
-   '(jabber-vcard-avatars-retrieve nil))
-;;(provide 'custom-jabber-settings)
 (require 'jabber)
-;;(require 'custom-jabber-settings)
-;;(custom-jabber-settings)
+(require 'jabber-autoloads)
 
 ;; Notifying of new jabber.el messages.
 (defvar jabber-activity-jids-count 0)
@@ -122,6 +105,13 @@
 
 ;; Load up Org Mode and Babel
 (require 'org-install)
+
+(require 'typopunct)
+(setq-default typopunct-buffer-language 'russian)
+
+(add-hook 'markdown-mode-hook 'turn-on-typopunct-mode)
+(add-hook 'org-mode-hook 'turn-on-typopunct-mode)
+(add-hook 'jabber-chat-mode-hook 'turn-on-typopunct-mode)
 
 ;; Markdown to PDF and other conversions support
 (load "pandoc-mode")
