@@ -10,3 +10,6 @@ ac-comphist.dat
 places
 url
 elpa
+tramp
+
+custom.el
