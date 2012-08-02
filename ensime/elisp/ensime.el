@@ -54,6 +54,7 @@
 (require 'ensime-refactor)
 (require 'ensime-undo)
 (require 'ensime-search)
+(require 'ensime-scalex)
 (require 'ensime-doc)
 (require 'ensime-semantic-highlight)
 (require 'ensime-ui)
@@ -116,7 +117,7 @@
   :type 'integer
   :group 'ensime-server)
 
-(defcustom ensime-default-server-cmd "bin/server"
+(defcustom ensime-default-server-cmd "~/.emacs.d/ensime/bin/server"
   "Command to launch server process."
   :type 'string
   :group 'ensime-server)
@@ -256,6 +257,7 @@ Do not show 'Writing..' message."
       (define-key prefix-map (kbd "C-v f") 'ensime-format-source)
       (define-key prefix-map (kbd "C-v u") 'ensime-undo-peek)
       (define-key prefix-map (kbd "C-v v") 'ensime-search)
+      (define-key prefix-map (kbd "C-v x") 'ensime-scalex)
       (define-key prefix-map (kbd "C-v t") 'ensime-show-doc-for-symbol-at-point)
       (define-key prefix-map (kbd "C-v .") 'ensime-expand-selection-command)
 
@@ -353,7 +355,8 @@ Do not show 'Writing..' message."
      ["Backward compilation note" ensime-backward-note]
      ["Forward compilation note" ensime-forward-note]
      ["Expand selection" ensime-expand-selection-command]
-     ["Search" ensime-search])
+     ["Search" ensime-search]
+     ["Scalex-Search" ensime-scalex])
 
     ("Documentation"
      ["Browse documentation of symbol" ensime-show-doc-for-symbol-at-point])
@@ -911,7 +914,7 @@ The default condition handler for timer functions (see
 			  (find-file-other-window ,file-path)
 			  (if (integerp ,line)
 			      (ensime-goto-line ,line)
-			    (goto-char ,offset))
+			    (goto-char (or ,offset 0)))
 			  )))
 
 (defun ensime-make-code-hyperlink (start end http-path &optional face)
@@ -1054,6 +1057,11 @@ The default condition handler for timer functions (see
 			 (substring ,tmp 0 (- (length ,tmp) 1)) ,tmp))
 	      (,name (if matchedp (match-string 2 ,str) nil)))
 	 ,@body))))
+
+(defun ensime-last-name-component (str)
+  (if (integerp (string-match "^.*?\\.\\([^\\.]+\\)$"str))
+      (match-string 1 str)
+    str))
 
 (defun ensime-strip-dollar-signs (str)
   (replace-regexp-in-string "\\$" "" str))
@@ -1245,6 +1253,7 @@ The functions are called with the process as their argument.")
   "Make a buffer suitable for a network process."
   (let ((buffer (generate-new-buffer name)))
     (with-current-buffer buffer
+      (set-buffer-multibyte t)
       (buffer-disable-undo)
       (set (make-local-variable 'kill-buffer-query-functions) nil))
     buffer))
@@ -1302,8 +1311,12 @@ The functions are called with the process as their argument.")
 (defun ensime-net-have-input-p ()
   "Return true if a complete message is available."
   (goto-char (point-min))
-  (and (>= (buffer-size) 6)
-       (>= (- (buffer-size) 6) (ensime-net-decode-length))))
+  (and (>= (ensime-buffer-size-in-bytes) 6)
+       (>= (- (ensime-buffer-size-in-bytes) 6)
+	   (ensime-net-decode-length))))
+
+(defun ensime-buffer-size-in-bytes ()
+  (- (position-bytes (point-max)) 1))
 
 (defun ensime-run-when-idle (function &rest args)
   "Call FUNCTION as soon as Emacs is idle."
@@ -1326,10 +1339,12 @@ The functions are called with the process as their argument.")
 	 (start (+ 6 (point)))
 	 (end (+ start length)))
     (assert (plusp length))
-    (prog1 (save-restriction
-	     (narrow-to-region start end)
-	     (read (current-buffer)))
-      (delete-region (point-min) end))))
+    (goto-char (byte-to-position start))
+    (prog1 (read (current-buffer))
+      (delete-region (- (byte-to-position start) 6)
+		     (byte-to-position end)))
+    ))
+
 
 (defun ensime-net-decode-length ()
   "Read a 24-bit hex-encoded integer from buffer."
@@ -2556,6 +2571,13 @@ any buffer visiting the given file."
 		   (ensime-files-equal-p file window-file))
 	  (throw 'result w))))))
 
+(defun ensime-window-showing-buffer (buffer)
+  (catch 'result
+    (dolist (w (window-list))
+      (let* ((buf (window-buffer w)))
+	(when (equal buf buffer)
+	  (throw 'result w))))))
+
 (defun ensime-point-at-bol (file line)
   (with-current-buffer (find-buffer-visiting file)
     (save-excursion
@@ -2738,29 +2760,38 @@ any buffer visiting the given file."
 	      :name (buffer-substring-no-properties start end))))))
 
 
-
 (defun ensime-insert-import (qualified-name)
   "A simple, hacky import insertion."
   (save-excursion
-    (goto-char (point-min))
-    (search-forward-regexp "^\\s-*package\\s-" nil t)
-    (goto-char (point-at-eol))
 
-    ;; Advance past all imports that should sort before
-    ;; the new one lexicographically.
-    (while (progn
+  (let ((starting-point (point)))
+    (search-backward-regexp "^\\s-*package\\s-" nil t)
+    (search-forward-regexp "^\\s-*import\\s-" starting-point t)
+    (goto-char (point-at-bol))
+
+    ;; No imports yet
+    (when (looking-at "^\\s-*package\\s-")
+      (goto-char (point-at-eol))
+      (newline)
+      )
+
+    (when (looking-at "^\\s-*import\\s-")
+      (left-char 1)
+      (while (progn
 	     (if (looking-at "[\n\t ]*import\\s-\\(.+\\)\n")
 		 (let ((imported-name (match-string 1)))
 		   (string< imported-name qualified-name)
 		   )))
-      (search-forward-regexp "import" nil t)
-      (goto-char (point-at-eol)))
+        (search-forward-regexp "^\\s-*import\\s-" starting-point t)
+        (goto-char (point-at-eol)))
+      )
+    )
 
-    (newline)
-    (insert (format (cond ((ensime-visiting-scala-file-p) "import %s")
-			  ((ensime-visiting-java-file-p) "import %s;"))
-		    qualified-name))
-    (indent-region (point-at-bol) (point-at-eol))))
+  (newline)
+  (insert (format (cond ((ensime-visiting-scala-file-p) "import %s")
+                        ((ensime-visiting-java-file-p) "import %s;"))
+                  qualified-name))
+  (indent-region (point-at-bol) (point-at-eol))))
 
 
 
@@ -2799,6 +2830,14 @@ any buffer visiting the given file."
 	      ))
 	  )))
     ))
+
+(defvar ensime-dir (file-name-directory load-file-name)
+  "The root dir of the Ensime distribution.")
+
+(defun ensime-recompile-el ()
+  "Byte-recompilation of all Emacs Lisp files."
+  (interactive)
+  (byte-recompile-directory ensime-dir 0))
 
 ;; Source Formatting
 
@@ -2915,6 +2954,10 @@ any buffer visiting the given file."
   (ensime-eval
    `(swank:debug-value-for-field ,object-id ,name)))
 
+(defun ensime-rpc-debug-value-for-stack-var (thread-id frame offset)
+  (ensime-eval
+   `(swank:debug-value-for-stack-var ,thread-id ,frame ,offset)))
+
 (defun ensime-rpc-debug-value-for-index (object-id index)
   (ensime-eval
    `(swank:debug-value-for-index ,object-id ,index)))
@@ -2923,9 +2966,17 @@ any buffer visiting the given file."
   (ensime-eval
    `(swank:debug-value-for-id ,object-id)))
 
+(defun ensime-rpc-debug-set-stack-var (thread-id frame offset new-val)
+  (ensime-eval
+   `(swank:debug-set-stack-var ,thread-id ,frame ,offset ,new-val)))
+
 (defun ensime-rpc-debug-start (command-line)
   (ensime-eval
    `(swank:debug-start ,command-line)))
+
+(defun ensime-rpc-debug-attach (hostname port)
+  (ensime-eval
+   `(swank:debug-attach ,hostname ,port)))
 
 (defun ensime-rpc-debug-stop ()
   (ensime-eval
@@ -3013,6 +3064,7 @@ with the current project's dependencies loaded. Returns a property list."
      ,(ensime-computed-point)
      ,(or max-results 0)
      ,case-sens
+     t ;; reload
      )))
 
 (defun ensime-rpc-import-suggestions-at-point (names max-results)
@@ -3277,7 +3329,7 @@ with the current project's dependencies loaded. Returns a property list."
 			(ensime-make-doc-url type)
 			)))
 	  (ensime-insert-link " doc" url
-			      (+ (ensime-pos-offset pos)
+			      (+ (or (ensime-pos-offset pos) 0)
 				 ensime-ch-fix))))
 
       )))
@@ -3317,7 +3369,7 @@ with the current project's dependencies loaded. Returns a property list."
 	(progn
 	  (ensime-insert-link
 	   (format "%s" member-name) url
-	   (+ (ensime-pos-offset pos) ensime-ch-fix)
+	   (+ (or (ensime-pos-offset pos) 0) ensime-ch-fix)
 	   font-lock-function-name-face)
 	  (tab-to-tab-stop)
 	  (ensime-inspector-insert-linked-type type nil nil))
@@ -3869,16 +3921,16 @@ It should be used for \"background\" messages such as argument lists."
   (plist-get pos :file))
 
 (defun ensime-pos-offset (pos)
-  (or (plist-get pos :offset) -1))
+  (plist-get pos :offset))
 
 (defun ensime-pos-line (pos)
-  (or (plist-get pos :line) -1))
+  (plist-get pos :line))
 
 (defun ensime-pos-valid-local-p (pos)
   (and (stringp (ensime-pos-file pos))
        (file-exists-p (ensime-pos-file pos))
        (integerp (ensime-pos-offset pos))
-       (> (ensime-pos-offset pos) 0)))
+       (integerp (ensime-pos-offset pos))))
 
 (defun ensime-note-file (note)
   (plist-get note :file))
@@ -4205,6 +4257,15 @@ PROP is the name of a text property."
   (assert (get-text-property (point) prop))
   (let ((end (next-single-char-property-change (point) prop)))
     (list (previous-single-char-property-change end prop) end)))
+
+(defun ensime-chomp (str)
+  "Chomp leading and tailing whitespace from STR."
+  (while (string-match "\\`\n+\\|^\\s-+\\|\\s-+$\\|\n+\\'"
+		       str)
+    (setq str (replace-match "" t t str)))
+  str)
+
+
 
 
 ;; Testing helpers
