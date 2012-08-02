@@ -14,6 +14,7 @@
 				   'emms
                                    'erc
                                    'ecb
+                                   'jabber
                                    'nxml
                                    'typopunct
                                    'rainbow-delimiters)

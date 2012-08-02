@@ -42,8 +42,10 @@
 (setq overconfig-file (concat dotfiles-dir "overconfig.el"))
 
 (require 'package)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 (require 'starter-kit-elpa)
+
 
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session

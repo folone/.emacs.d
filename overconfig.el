@@ -211,8 +211,6 @@
       (activate-input-method current))))
 (reverse-input-method 'cyrillic-jcuken)
 
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-
 ;; IRC chats
 ;; TODO move to separate file
 (require 'erc)
