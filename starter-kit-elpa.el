@@ -11,6 +11,7 @@
                                    'find-file-in-project
                                    'magit
                                    'gist
+                                   'hl-line+
 				   'emms
                                    'erc
                                    'ecb
