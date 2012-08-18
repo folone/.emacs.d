@@ -6,12 +6,16 @@
 
 (defvar starter-kit-packages (list 'idle-highlight
                                    'scala-mode
+                                   'evil
+                                   'evil-leader
+                                   'evil-numbers
                                    'css-mode
                                    'yaml-mode
                                    'find-file-in-project
                                    'magit
                                    'gist
                                    'hl-line+
+                                   'js2-mode
 				   'emms
                                    'erc
                                    'ecb

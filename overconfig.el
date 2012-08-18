@@ -249,6 +249,9 @@
 (require 'minimap)
 ;; TODO assign `toggle this feature` on some key.
 
+(require 'evil)
+(evil-mode 1)
+
 ;; This function does some scala code prettifying.
 (defun prettify-scala-code ()
   "Replace ascii with it's unicode counterparts."
