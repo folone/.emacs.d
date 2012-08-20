@@ -251,6 +251,8 @@
 
 (require 'evil)
 (evil-mode 1)
+(setq evil-default-cursor t)
+(set-cursor-color "#cdcdc1")
 
 ;; This function does some scala code prettifying.
 (defun prettify-scala-code ()
