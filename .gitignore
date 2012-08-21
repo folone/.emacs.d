@@ -13,3 +13,4 @@ elpa
 tramp
 
 custom.el
+loaddefs.el

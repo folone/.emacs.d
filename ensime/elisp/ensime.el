@@ -415,6 +415,10 @@ Do not show 'Writing..' message."
         (add-hook 'ensime-source-buffer-loaded-hook
                   'ensime-sem-high-refresh-hook t)
 
+        (add-hook 'ensime-source-buffer-loaded-hook
+                  'ensime-typecheck-current-file)
+
+
         (when ensime-tooltip-hints
           (add-hook 'tooltip-functions 'ensime-tooltip-handler)
           (make-local-variable 'track-mouse)
@@ -441,6 +445,9 @@ Do not show 'Writing..' message."
 
       (remove-hook 'ensime-source-buffer-loaded-hook
                    'ensime-sem-high-refresh-hook)
+
+      (remove-hook 'ensime-source-buffer-loaded-hook
+                   'ensime-typecheck-current-file)
 
       (remove-hook 'tooltip-functions 'ensime-tooltip-handler)
       (make-local-variable 'track-mouse)
@@ -2933,6 +2940,10 @@ any buffer visiting the given file."
 
 
 ;; Basic RPC calls
+
+(defun ensime-rpc-method-bytecode (file line)
+  (ensime-eval
+   `(swank:method-bytecode ,file ,line)))
 
 (defun ensime-rpc-debug-active-vm ()
   (ensime-eval
