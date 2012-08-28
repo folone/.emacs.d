@@ -123,21 +123,21 @@
 ;; Load ensime mode
 (require 'ensime)
 
-;; This step causes the ensime-mode to be started whenever
-;; scala-mode is started for a buffer. You may have to customize this step
-;; if you're not using the standard scala mode.
+;; This causes the ensime-mode to be started whenever scala-mode is started
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-(setq exec-path (append exec-path (list "~/bin/scala-2.9.0.1/bin" )))
 
+;; Ecb with type inspector and stuff
 (require 'ensime-ecb)
 (require 'ensime-layout-defs)
 (require 'sbt)
 
+;; F12 to toggle ecb
 (global-set-key [f12] 'ecb-toggle-ecb-windows)
 
 ;; Scalaz unicode hook
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scalaz-unicode-input-method"))
 (require 'scalaz-unicode-input-method)
+
 ;; Only enable unicode mode for insert mode in evil-mode
 (add-hook 'evil-insert-state-entry-hook
           (lambda () (set-input-method "scalaz-unicode")))
