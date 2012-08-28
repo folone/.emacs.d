@@ -138,8 +138,11 @@
 ;; Scalaz unicode hook
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scalaz-unicode-input-method"))
 (require 'scalaz-unicode-input-method)
-(add-hook 'scala-mode-hook
+;; Only enable unicode mode for insert mode in evil-mode
+(add-hook 'evil-insert-state-entry-hook
           (lambda () (set-input-method "scalaz-unicode")))
+(add-hook 'evil-insert-state-exit-hook
+          (lambda () (set-input-method nil)))
 
 ;; Haskell mode
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/haskell-mode"))
