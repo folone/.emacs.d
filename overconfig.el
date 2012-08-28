@@ -138,11 +138,16 @@
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scalaz-unicode-input-method"))
 (require 'scalaz-unicode-input-method)
 
-;; Only enable unicode mode for insert mode in evil-mode
+;; Only enable unicode mode for insert and emacs states in evil-mode
 (add-hook 'evil-insert-state-entry-hook
           (lambda () (set-input-method "scalaz-unicode")))
 (add-hook 'evil-insert-state-exit-hook
           (lambda () (set-input-method nil)))
+(add-hook 'evil-emacs-state-entry-hook
+          (lambda () (set-input-method "scalaz-unicode")))
+(add-hook 'evil-emacs-state-exit-hook
+          (lambda () (set-input-method nil)))
+
 
 ;; Haskell mode
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/haskell-mode"))
