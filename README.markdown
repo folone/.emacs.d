@@ -38,7 +38,7 @@ this config. You can then `M-x customize-themes`,
 * Misc
   * `M-space` -- leave ony one space (remove multiple spaces ubnder cursor)
   * `C-x \` -- align selected by regexp
-  " `C-x →` and `C-x ←` -- next/previous buffer
+  * `C-x →` and `C-x ←` -- next/previous buffer
   * `C-x n n` -- narrow selected
   * `C-x n w` -- go back from narrowing
 
