@@ -134,6 +134,9 @@
 ;; F12 to toggle ecb
 (global-set-key [f12] 'ecb-toggle-ecb-windows)
 
+;; File navigation
+(global-set-key [f11] 'nav)
+
 ;; Scalaz unicode hook
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scalaz-unicode-input-method"))
 (require 'scalaz-unicode-input-method)

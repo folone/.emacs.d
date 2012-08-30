@@ -22,6 +22,7 @@
                                    'jabber
                                    'nxml
                                    'typopunct
+                                   'nav
                                    'rainbow-delimiters)
   "Libraries that should be installed by default.")
 

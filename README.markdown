@@ -15,6 +15,7 @@
 * rainbow-delemiters to distinguish between parentheses
 * nyan-mode
 * haskell-mode
+* nav
 
 *Note:* all the above stuff will get installed on your first run with
 this config. You can then `M-x customize-themes`, and `M-x jabber-customize`.
@@ -27,6 +28,7 @@ this config. You can then `M-x customize-themes`, and `M-x jabber-customize`.
   * `C-c C-r t` -- find import for nonexisting symbol
   * `C-c C-v c` and `C-c C-v a` -- typecheck current file or the whole project
   * `TAB` -- autocomplete
+  * `F12` -- ecb 
 * Haskell-mode
   * `C-c C-z` -- haskell repl
   * `C-c C-l` -- load current file in it
@@ -39,6 +41,7 @@ this config. You can then `M-x customize-themes`, and `M-x jabber-customize`.
   * `C-x →` and `C-x ←` -- next/previous buffer
   * `C-x n n` -- narrow selected
   * `C-x n w` -- go back from narrowing
+  * `F11` -- file navigation
 
 ### Learning
 
