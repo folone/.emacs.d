@@ -10,7 +10,6 @@
 * evil-mode: vim in your emacs. disable with `C-z`
 * In emacs-state and insert-state some unicode conversions are
   available: map → ∘, >>= → ∗, all → ∀, any → ∃, etc.
-* Tabs via tabbar. Next tab `C-c TAB`, previous `C-c M-TAB`
 * jabber.el and erc
 * js2-mode
 * rainbow-delemiters to distinguish between parentheses
@@ -18,8 +17,7 @@
 * haskell-mode
 
 *Note:* all the above stuff will get installed on your first run with
-this config. You can then `M-x customize-themes`,
-`M-x customize-group [RET] tabbar [RET]` and `M-x jabber-customize`.
+this config. You can then `M-x customize-themes`, and `M-x jabber-customize`.
 
 ### Random highlights on stuff, I use
 
