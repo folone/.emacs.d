@@ -1,6 +1,47 @@
 # My Emacs config
 ## Initially forked from [emacs starter kit](http://github.com/technomancy/emacs-starter-kit/)
 
+### Features, different from vanilla starter-kit
+
+* scala-mode. To change all arrows to their unicode counterparts,
+  `C-c p`
+* latest ensime for scala development
+* scamacs -- ecb for ensime for type inspection and other IDE-like stuff
+* evil-mode: vim in your emacs. disable with `C-z`
+* In emacs-state and insert-state some unicode conversions are
+  available: map → ∘, >>= → ∗, all → ∀, any → ∃, etc.
+* Tabs via tabbar. Next tab `C-c TAB`, previous `C-c M-TAB`
+* jabber.el and erc
+* js2-mode
+* rainbow-delemiters to distinguish between parentheses
+* nyan-mode
+* haskell-mode
+
+*Note:* all the above stuff will get installed on your first run with
+this config. You can then `M-x customize-themes`,
+`M-x customize-group [RET] tabbar [RET]` and `M-x jabber-customize`.
+
+### Random highlights on stuff, I use
+
+* Ensime
+  * `C-c C-v v` -- search for types in classpath
+  * `C-c C-v z` -- scala repl with project classes on classpath
+  * `C-c C-r t` -- find import for nonexisting symbol
+  * `C-c C-v c` and `C-c C-v a` -- typecheck current file or the whole project
+  * `TAB` -- autocomplete
+* Haskell-mode
+  * `C-c C-z` -- haskell repl
+  * `C-c C-l` -- load current file in it
+* Jabber
+  * `C-x C-j C-c` -- connect to ∀ servers
+  * `C-x C-j C-d` -- disconnect
+* Misc
+  * `M-space` -- leave ony one space (remove multiple spaces ubnder cursor)
+  * `C-x \` -- align selected by regexp
+  " `C-x →` and `C-x ←` -- next/previous buffer
+  * `C-x n n` -- narrow selected
+  * `C-x n w` -- go back from narrowing
+
 ### Learning
 
 This won't teach you Emacs, but it'll make it easier to get
