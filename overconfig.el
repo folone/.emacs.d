@@ -295,13 +295,13 @@
              (or
               (mode . erc-mode)
               (mode . jabber-chat)))
-            ("Elisp"
-             (filename . "el"))
             ("Haskell"
              (mode . haskell-mode))
             ("SQL"
              (mode .sql-mode))
-            ))))
+            ("Elisp"
+             (filename . "el"))
+           ))))
 
 (add-hook 'ibuffer-mode-hook
   (lambda ()
