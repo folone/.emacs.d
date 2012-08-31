@@ -36,6 +36,10 @@ this config. You can then `M-x customize-themes`, and `M-x jabber-customize`.
 * Jabber
   * `C-x C-j C-c` -- connect to ∀ servers
   * `C-x C-j C-d` -- disconnect
+* IBuffer
+  * `TAB` -- to jump between categories
+  * `d` -- to mark buffers for delition, `x` to kill them. Much like
+  package manager delition is working.
 * Misc
   * `M-space` -- leave ony one space (remove multiple spaces ubnder cursor)
   * `C-x \` -- align selected by regexp

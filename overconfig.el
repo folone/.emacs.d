@@ -280,6 +280,33 @@
       (minimap-create)
     (minimap-kill)))
 
+;; Configuration for ibuffer
+(setq ibuffer-saved-filter-groups
+  (quote (("default"
+            ("Org" ;; all org-related buffers
+              (mode . org-mode))
+            ("Scala"
+             (mode . scala-mode))
+            ("web"
+             (or
+              (mode . js2-mode)
+              (mode . nxml-mode)))
+            ("Chat"
+             (or
+              (mode . erc-mode)
+              (mode . jabber-chat)))
+            ("Elisp"
+             (filename . "el"))
+            ("Haskell"
+             (mode . haskell-mode))
+            ("SQL"
+             (mode .sql-mode))
+            ))))
+
+(add-hook 'ibuffer-mode-hook
+  (lambda ()
+    (ibuffer-switch-to-saved-filter-groups "default")))
+
 ;; Keys mapping:
 
 ;; switch to ERC with Ctrl+c e
