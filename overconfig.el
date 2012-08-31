@@ -131,12 +131,6 @@
 (require 'ensime-layout-defs)
 (require 'sbt)
 
-;; F12 to toggle ecb
-(global-set-key [f12] 'ecb-toggle-ecb-windows)
-
-;; File navigation
-(global-set-key [f11] 'nav)
-
 ;; Scalaz unicode hook
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scalaz-unicode-input-method"))
 (require 'scalaz-unicode-input-method)
@@ -249,8 +243,6 @@
     (when (y-or-n-p "Start ERC? ") ;; no: maybe start ERC
       (erc :server "irc.freenode.net" :port 6667 :nick "folone" :password "**********" :full-name "Georgii Leontiev"))))
 
-;; switch to ERC with Ctrl+c e
-(global-set-key (kbd "C-c e") 'djcb-erc-start-or-switch) ;; ERC
 
 (require 'roy-mode)
 
@@ -258,7 +250,6 @@
 
 ;; minimap
 (require 'minimap)
-;; TODO assign `toggle this feature` on some key.
 
 (require 'evil)
 (evil-mode 1)
@@ -280,4 +271,28 @@
                  (replace-string toreplace withreplace))
                replace-table)
       replaces)))
+
+;; Toggling minimap
+(defun minimap-toggle ()
+  "Toggle minimap for current buffer."
+  (interactive)
+  (if (null minimap-bufname)
+      (minimap-create)
+    (minimap-kill)))
+
+;; Keys mapping:
+
+;; switch to ERC with Ctrl+c e
+(global-set-key (kbd "C-c e") 'djcb-erc-start-or-switch) ;; ERC
+
+;; Scala prettification
 (global-set-key (kbd "C-c p") 'prettify-scala-code)
+
+;; F12 to toggle ecb
+(global-set-key [f12] 'ecb-toggle-ecb-windows)
+
+;; File navigation
+(global-set-key [f11] 'nav)
+
+;; Minimap
+(global-set-key [f10] 'minimap-toggle)

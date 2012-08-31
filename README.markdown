@@ -16,6 +16,7 @@
 * nyan-mode
 * haskell-mode
 * nav
+* minimap (sublime-like)
 
 *Note:* all the above stuff will get installed on your first run with
 this config. You can then `M-x customize-themes`, and `M-x jabber-customize`.
@@ -42,6 +43,7 @@ this config. You can then `M-x customize-themes`, and `M-x jabber-customize`.
   * `C-x n n` -- narrow selected
   * `C-x n w` -- go back from narrowing
   * `F11` -- file navigation
+  * `F10` -- minimap
 
 ### Learning
 
