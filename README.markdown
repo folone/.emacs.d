@@ -48,6 +48,7 @@ this config. You can then `M-x customize-themes`, and `M-x jabber-customize`.
   * `C-x n w` -- go back from narrowing
   * `F11` -- file navigation
   * `F10` -- minimap
+  * `C-x +` will balance all buffers to occupy the same witdh/height
 
 ### Learning
 
