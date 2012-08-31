@@ -278,7 +278,9 @@
   (interactive)
   (if (null minimap-bufname)
       (minimap-create)
-    (minimap-kill)))
+    (minimap-kill)
+    (balance-windows))
+  )
 
 ;; Configuration for ibuffer
 (setq ibuffer-saved-filter-groups
