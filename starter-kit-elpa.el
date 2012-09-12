@@ -20,7 +20,7 @@
                                    'erc
                                    'ecb
                                    'jabber
-                                   'nxml
+;;                                   'nxml
                                    'typopunct
                                    'nav
                                    'rainbow-delimiters)
