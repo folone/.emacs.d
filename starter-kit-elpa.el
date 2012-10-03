@@ -16,13 +16,10 @@
                                    'gist
                                    'hl-line+
                                    'js2-mode
-				   'emms
                                    'erc
                                    'ecb
                                    'jabber
-;;                                   'nxml
                                    'typopunct
-                                   'nav
                                    'rainbow-delimiters)
   "Libraries that should be installed by default.")
 
