@@ -134,7 +134,7 @@ starter-kit-elpa-install in a fresh instance.
 
 ## Variants of Emacs
 
-The Starter Kit is designed to work with GNU Emacs version 22 or
+The Starter Kit is designed to work with GNU Emacs version 24 or
 greater. Using it with forks or other variants is not supported. It
 probably won't work with XEmacs, though some have reported getting it
 to work with Aquamacs. However, since Aquamacs is not portable,
