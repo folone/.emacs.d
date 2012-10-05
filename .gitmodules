@@ -12,4 +12,4 @@
 	url = git://github.com/haskell/haskell-mode.git
 [submodule "elpa-to-submit/nxml-mode"]
 	path = elpa-to-submit/nxml-mode
-	url = git://github.com/likun5053/nxml-mode.git
+	url = git://github.com/emacsmirror/nxml.git
