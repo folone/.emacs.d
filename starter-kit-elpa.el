@@ -21,6 +21,7 @@
                                    'jabber
                                    'typopunct
                                    'roy-mode
+                                   'haskell-mode
                                    'rainbow-delimiters)
   "Libraries that should be installed by default.")
 

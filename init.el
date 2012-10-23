@@ -26,10 +26,7 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 
-(add-to-list 'load-path (concat dotfiles-dir "/emacs-jabber"))
-
-(add-to-list 'load-path (concat dotfiles-dir "/haskellmode-emacs"))
-;;(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/roy-mode"))
+(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/nyan-mode"))
 
 ;; Scala-stuff
 (add-to-list 'load-path (concat dotfiles-dir "/ensime/elisp"))

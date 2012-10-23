@@ -181,7 +181,6 @@
 (global-hl-line-mode 1)
 
 ;; Nyan mode
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/nyan-mode"))
 (require 'nyan-mode)
 (nyan-mode 1)
 
