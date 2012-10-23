@@ -29,7 +29,7 @@
 (add-to-list 'load-path (concat dotfiles-dir "/emacs-jabber"))
 
 (add-to-list 'load-path (concat dotfiles-dir "/haskellmode-emacs"))
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/roy-mode"))
+;;(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/roy-mode"))
 
 ;; Scala-stuff
 (add-to-list 'load-path (concat dotfiles-dir "/ensime/elisp"))
@@ -43,6 +43,7 @@
 
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 (require 'starter-kit-elpa)
 

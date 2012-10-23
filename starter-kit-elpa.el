@@ -20,6 +20,7 @@
                                    'ecb
                                    'jabber
                                    'typopunct
+                                   'roy-mode
                                    'rainbow-delimiters)
   "Libraries that should be installed by default.")
 
