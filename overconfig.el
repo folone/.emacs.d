@@ -182,6 +182,9 @@
 ;; Nyan mode
 (require 'nyan-mode)
 (nyan-mode 1)
+;;(setq nyan-wavy-trail t)
+(nyan-start-animation)
+;;(nyan-start-music)
 
 ;; Colourfull brackets
 (add-hook 'scala-mode-hook 'rainbow-delimiters-mode)
