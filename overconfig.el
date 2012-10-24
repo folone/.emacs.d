@@ -158,12 +158,6 @@
 ;; Spaces for tabs
 (setq-default indent-tabs-mode nil)
 
-;; nxml-mode
-(load "elpa-to-submit/nxml-mode/rng-auto.el")
-(setq auto-mode-alist
-        (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
-	      auto-mode-alist))
-
 ;;js2-mode
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
@@ -294,7 +288,8 @@
             ("web"
              (or
               (mode . js2-mode)
-              (mode . nxml-mode)))
+;;              (mode . nxml-mode)
+              ))
             ("Chat"
              (or
               (mode . erc-mode)

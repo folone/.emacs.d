@@ -4,6 +4,3 @@
 [submodule "elpa-to-submit/emacs-scalaz-unicode-input-method"]
 	path = elpa-to-submit/scalaz-unicode-input-method
 	url = https://github.com/folone/emacs-scalaz-unicode-input-method.git
-[submodule "elpa-to-submit/nxml-mode"]
-	path = elpa-to-submit/nxml-mode
-	url = git://github.com/emacsmirror/nxml.git
