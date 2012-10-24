@@ -183,6 +183,7 @@
 (require 'nyan-mode)
 (nyan-mode 1)
 ;;(setq nyan-wavy-trail t)
+(setq nyan-bar-length 20)
 (nyan-start-animation)
 ;;(nyan-start-music)
 
