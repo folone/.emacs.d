@@ -147,7 +147,6 @@
 
 
 ;; Haskell mode
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/haskell-mode"))
 (load "haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -178,7 +177,7 @@
 (nyan-mode 1)
 ;;(setq nyan-wavy-trail t)
 (setq nyan-bar-length 20)
-(nyan-start-animation)
+;;(nyan-start-animation)
 ;;(nyan-start-music)
 
 ;; Colourfull brackets
