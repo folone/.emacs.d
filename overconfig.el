@@ -4,6 +4,8 @@
 (report-errors "File mode specification error: %s"
   (set-auto-mode))
 
+;; disable autofill mode.
+(auto-fill-mode nil)
 ;; set up unicode
 (prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
