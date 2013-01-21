@@ -5,7 +5,7 @@
 (require 'cl)
 
 (defvar starter-kit-packages (list 'idle-highlight
-                                   'scala-mode
+                                   'scala-mode2
                                    'evil
                                    'evil-leader
                                    'evil-numbers

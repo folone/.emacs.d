@@ -5,6 +5,7 @@
 *.elc
 
 .emacs.desktop
+.emacs.desktop.lock
 .emms-history
 ac-comphist.dat
 places

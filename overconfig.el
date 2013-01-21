@@ -120,7 +120,7 @@
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 
 ;; Load scala mode
-(require 'scala-mode-auto)
+(require 'scala-mode2)
 
 ;; Load ensime mode
 (require 'ensime)
