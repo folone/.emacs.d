@@ -5,6 +5,7 @@
 (require 'cl)
 
 (defvar starter-kit-packages (list 'idle-highlight
+                                   'python-mode
                                    'scala-mode2
                                    'evil
                                    'evil-leader
