@@ -17,7 +17,7 @@
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 ;; Set font
-(set-face-attribute 'default nil :height 80)
+(set-face-attribute 'default nil :height 100)
 
 ;; Set default browser to chromium
 (setq browse-url-browser-function 'browse-url-generic
