@@ -238,8 +238,30 @@
   (if (get-buffer "irc.freenode.net:6667") ;; ERC already active?
     (erc-track-switch-buffer 1) ;; yes: switch to last active
     (when (y-or-n-p "Start ERC? ") ;; no: maybe start ERC
-      (erc :server "irc.freenode.net" :port 6667 :nick "folone" :password "**********" :full-name "Georgii Leontiev"))))
+      (erc :server "irc.freenode.net" :port 6667 :nick "folone"
+           :full-name "George Leontiev"))))
 
+;; Python stuff
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "/home/folone/bin/pycheckers"  (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init)))
+
+(custom-set-variables
+ '(py-pychecker-command "/home/folone/bin/pycheckers")
+ '(py-pychecker-command-args (quote ("")))
+ '(python-check-command "/home/folone/bin/pycheckers"))
+
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+
+;;(add-hook 'python-mode-hook 'flymake-mode)
+;;(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 
 (require 'roy-mode)
 
