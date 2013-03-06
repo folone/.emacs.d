@@ -5,7 +5,7 @@
   (set-auto-mode))
 
 ;; disable autofill mode.
-(auto-fill-mode nil)
+(auto-fill-mode 0)
 ;; set up unicode
 (prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -223,7 +223,7 @@
 ;; name can be be a bit different, which would screw up autoconnect
 (erc-autojoin-mode t)
 (setq erc-autojoin-channels-alist
-      '((".*\\.freenode.net" "#haskell" "#scala")))
+      '((".*\\.freenode.net" "#haskell" "#scala" "#scalaz")))
 
 ;; check channels
 (erc-track-mode t)

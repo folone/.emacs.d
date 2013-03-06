@@ -4,3 +4,6 @@
 [submodule "elpa-to-submit/emacs-scalaz-unicode-input-method"]
 	path = elpa-to-submit/scalaz-unicode-input-method
 	url = https://github.com/folone/emacs-scalaz-unicode-input-method.git
+[submodule "elpa-to-submit/agda-mode"]
+	path = elpa-to-submit/agda-mode
+	url = git://github.com/jwiegley/agda-mode.git
