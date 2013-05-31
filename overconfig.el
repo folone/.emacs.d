@@ -14,6 +14,7 @@
 (global-set-key (kbd "C-9") '(lambda()(interactive)(djcb-opacity-modify t)))
 (global-set-key (kbd "C-0") '(lambda()(interactive)
                                (modify-frame-parameters nil `((alpha . 100)))))
+
 (global-set-key "\C-c\C-n" 'comment-dwim)
 
 ;; Desktop saving
@@ -284,7 +285,7 @@
 
 (require 'roy-mode)
 
-(eval-after-load "color-theme" '(color-theme-blackboard))
+;;(eval-after-load "color-theme" '(color-theme-blackboard))
 
 ;; minimap
 (require 'minimap)
@@ -364,3 +365,8 @@
 
 ;; Minimap
 (global-set-key [f10] 'minimap-toggle)
+
+;; popup-switch
+(require 'popup-switcher)
+(setq psw-in-window-center t)
+(global-set-key [f2] 'psw-switch)
