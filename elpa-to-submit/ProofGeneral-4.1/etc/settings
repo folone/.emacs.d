@@ -1,0 +1,5 @@
+# -*- shell-script -*- :mode=shellscript:
+
+PROOFGENERAL_HOME="$COMPONENT"
+PROOFGENERAL_OPTIONS=""
+#PROOFGENERAL_OPTIONS="-m no_brackets -m no_type_brackets"

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on October 3, 2011 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Proof General: 12. HOL Proof General</title>
+
+<meta name="description" content="Proof General: 12. HOL Proof General">
+<meta name="keywords" content="Proof General: 12. HOL Proof General">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="ProofGeneral_12.html#Isabelle-Proof-General" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="ProofGeneral_14.html#Shell-Proof-General" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="ProofGeneral.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="ProofGeneral_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="ProofGeneral_19.html#Function-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="ProofGeneral_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<hr size="2">
+<a name="HOL-Proof-General"></a>
+<a name="HOL-Proof-General-1"></a>
+<h1 class="chapter">12. HOL Proof General</h1>
+<a name="index-HOL-Proof-General"></a>
+
+<p>HOL Proof General is a &quot;technology demonstration&quot; of Proof General for
+HOL4 (aka HOL98).  This means that only a basic instantiation has been
+provided, and that it is not yet supported as a maintained instantiation
+of Proof General.
+</p>
+<p>HOL Proof General has basic script management support, with a little bit
+of decoration of scripts and output.  It does not rely on a modified
+version of HOL, so the pattern matching may be fragile in certain cases.
+Support for multiple files deduces dependencies automatically, so there
+is no interaction with the HOL make system yet.
+</p>
+<p>See the &lsquo;<tt>example.sml</tt>&rsquo; file for a demonstration proof script
+which works with Proof General.
+</p>
+<p>Note that HOL proof scripts often use batch-oriented single step tactic
+proofs, but Proof General does not (yet) offer an easy way to edit these
+kind of proofs.  They will replay simply as a single step proof and you
+will need to convert from the interactive to batch form as usual if you
+wish to obtain batch proofs.  Also note that Proof General does not
+contain an SML parser, so there can be problems if you write complex ML
+in proof scripts. 
+</p>
+<p>HOL Proof General may work with variants of HOL other than HOL98, but is
+untested.  Probably a few of the settings would need to be changed in a
+simple way, to cope with small differences in output between the
+systems.  (Please let us know if you modify the HOL98 version for
+another variant of HOL).
+</p>
+<p>Perhaps somebody from the HOL community is willing to adopt HOL Proof
+General and support and improve it.  Please volunteer!  
+</p>
+
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="ProofGeneral_12.html#Isabelle-Proof-General" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="ProofGeneral_14.html#Shell-Proof-General" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="ProofGeneral.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="ProofGeneral_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="ProofGeneral_19.html#Function-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="ProofGeneral_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>David Aspinall</em> on <em>October 3, 2011</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

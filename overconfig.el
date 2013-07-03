@@ -168,13 +168,17 @@
 
 
 ;; Haskell mode
-(load "haskell-site-file")
+;;(load "haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-to-list 'auto-mode-alist '("\\.idr\\'" . haskell-mode))
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 (setq haskell-program-name "ghci")
+
+;; Proof General
+(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/ProofGeneral-4.1/generic"))
+(require 'proof-site)
 
 ;; Spaces for tabs
 (setq-default indent-tabs-mode nil)

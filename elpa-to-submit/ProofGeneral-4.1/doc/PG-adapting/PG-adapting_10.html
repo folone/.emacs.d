@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on October 3, 2011 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Adapting Proof General: 9. Configuring Editing Syntax</title>
+
+<meta name="description" content="Adapting Proof General: 9. Configuring Editing Syntax">
+<meta name="keywords" content="Adapting Proof General: 9. Configuring Editing Syntax">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="PG-adapting_9.html#Handling-Multiple-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_11.html#Configuring-Font-Lock" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="PG-adapting.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_17.html#Function-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<hr size="2">
+<a name="Configuring-Editing-Syntax"></a>
+<a name="Configuring-Editing-Syntax-1"></a>
+<h1 class="chapter">9. Configuring Editing Syntax</h1>
+<a name="index-syntax-table"></a>
+
+<p>Emacs has some standard settings which configure the syntax of major
+modes.  The main setting is the <i>syntax table</i>, which determines the
+syntax of programming elements such as strings, comments, and
+parentheses.  To configure the syntax table, you can either write calls
+to <code>modify-syntax-entry</code> in your mode functions, or set the
+following variables to contain the tables for each mode.  (The main mode
+to be concerned about is of course the proof script, where user editing
+takes place).
+</p>
+<dl>
+<dt><a name="index-proof_002dscript_002dsyntax_002dtable_002dentries"></a><u>Variable:</u> <b>proof-script-syntax-table-entries</b></dt>
+<dd><p>List of syntax table entries for proof script mode.<br>
+A flat list of the form
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">  (<var>char</var> <var>syncode</var> <var>char</var> <var>syncode</var> ...)
+</pre></td></tr></table>
+<p>See doc of &lsquo;<samp><code>modify-syntax-entry</code></samp>&rsquo; for details of characters
+and syntax codes.
+</p>
+<p>At present this is used only by the &lsquo;<samp><code>proof-easy-config</code></samp>&rsquo; macro.
+</p></dd></dl>
+<dl>
+<dt><a name="index-proof_002dshell_002dsyntax_002dtable_002dentries"></a><u>Variable:</u> <b>proof-shell-syntax-table-entries</b></dt>
+<dd><p>List of syntax table entries for proof script mode.<br>
+A flat list of the form
+</p><table><tr><td>&nbsp;</td><td><pre class="lisp">  (<var>char</var> <var>syncode</var> <var>char</var> <var>syncode</var> ...)
+</pre></td></tr></table>
+<p>See doc of &lsquo;<samp><code>modify-syntax-entry</code></samp>&rsquo; for details of characters
+and syntax codes.
+</p>
+<p>At present this is used only by the &lsquo;<samp><code>proof-easy-config</code></samp>&rsquo; macro.
+</p></dd></dl>
+<p>Some additional useful settings are:
+</p>
+<dl>
+<dt><a name="index-comment_002dquote_002dnested"></a><u>Variable:</u> <b>comment-quote-nested</b></dt>
+<dd><p>Non-nil if nested comments should be quoted.  
+This should be locally set by each major mode if needed.  The
+default setting is non-nil: modes which allow nested comments may set
+this to nil.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-outline_002dregexp"></a><u>Variable:</u> <b>outline-regexp</b></dt>
+<dd><p>Regular expression to match the beginning of a heading.
+Any line whose beginning matches this regexp is considered to start a heading.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-outline_002dheading_002dend_002dregexp"></a><u>Variable:</u> <b>outline-heading-end-regexp</b></dt>
+<dd><p>Regular expression to match the beginning of a heading.
+Any line whose beginning matches this regexp is considered to start a heading.
+</p></dd></dl>
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="PG-adapting_9.html#Handling-Multiple-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_11.html#Configuring-Font-Lock" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="PG-adapting.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_17.html#Function-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>David Aspinall</em> on <em>October 3, 2011</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

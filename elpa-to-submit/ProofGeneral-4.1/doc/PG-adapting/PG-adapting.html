@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on October 3, 2011 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Adapting Proof General: Proof General</title>
+
+<meta name="description" content="Adapting Proof General: Proof General">
+<meta name="keywords" content="Adapting Proof General: Proof General">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Top"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_17.html#Function-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Proof-General"></a>
+<h1 class="settitle">Proof General</h1>
+
+<p>This file documents configuration mechanisms for version 4.1
+of <b>Proof General</b>, a generic Emacs interface for proof assistants.
+</p>
+<p>Proof General 4.1 has been tested with GNU Emacs
+23.3.  It is supplied ready customized for the proof
+assistants Coq, Lego, Isabelle, and HOL.
+</p>
+<p>This manual contains information for customizing to new proof
+assistants; see the user manual for details about how to use
+Proof General.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="PG-adapting_1.html#Introduction">Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_2.html#Beginning-with-a-New-Prover">1. Beginning with a New Prover</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_3.html#Menus-and-Toolbar-and-User_002dlevel-Commands">2. Menus, toolbar, and user-level commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_4.html#Proof-Script-Settings">3. Proof Script Settings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_5.html#Proof-Shell-Settings">4. Proof Shell Settings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_6.html#Goals-Buffer-Settings">5. Goals Buffer Settings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_7.html#Splash-Screen-Settings">6. Splash Screen Settings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_8.html#Global-Constants">7. Global Constants</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_9.html#Handling-Multiple-Files">8. Handling Multiple Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_10.html#Configuring-Editing-Syntax">9. Configuring Editing Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_11.html#Configuring-Font-Lock">10. Configuring Font Lock</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_12.html#Configuring-Tokens">11. Configuring Tokens</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_13.html#Writing-More-Lisp-Code">12. Writing More Lisp Code</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_14.html#Internals-of-Proof-General">13. Internals of Proof General</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_15.html#Plans-and-Ideas">A. Plans and Ideas</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_16.html#Demonstration-Instantiations">B. Demonstration Instantiations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_17.html#Function-Index">Function and Command Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_18.html#Variable-Index">Variable and User Option Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              
+</td></tr>
+<tr><td align="left" valign="top"><a href="PG-adapting_19.html#Concept-Index">Concept Index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               
+</td></tr>
+</table>
+
+<hr size="1">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_17.html#Function-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="PG-adapting_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>David Aspinall</em> on <em>October 3, 2011</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
