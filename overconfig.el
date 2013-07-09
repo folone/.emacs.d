@@ -370,6 +370,9 @@
 ;; Minimap
 (global-set-key [f10] 'minimap-toggle)
 
+;; Toolbar
+(global-set-key [f9] 'tool-bar-mode)
+
 ;; popup-switch
 (require 'popup-switcher)
 (setq psw-in-window-center t)
