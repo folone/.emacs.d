@@ -161,3 +161,7 @@ specified. See the file COPYING for details.
 
 On Unix, /home/$USER/.emacs.d, on windows Documents and Settings/%your
 user name%/Application Data
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/folone/.emacs.d/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
