@@ -29,7 +29,6 @@
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/nyan-mode"))
 
 ;; Scala-stuff
-(add-to-list 'load-path (concat dotfiles-dir "/ensime/elisp"))
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/scamacs"))
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/sbt"))
 

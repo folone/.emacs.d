@@ -7,6 +7,7 @@
 (defvar starter-kit-packages (list 'idle-highlight
                                    'python-mode
                                    'scala-mode2
+                                   'ensime
                                    'evil
                                    'evil-leader
                                    'evil-numbers
