@@ -376,3 +376,10 @@
 ;;(require 'popup-switcher)
 ;;(setq psw-in-window-center t)
 ;;(global-set-key [f2] 'psw-switch)
+
+;; key bindings
+(when (eq system-type 'darwin) ;; mac specific settings
+ (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'meta)
+  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  )
