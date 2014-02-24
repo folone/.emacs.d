@@ -139,6 +139,8 @@
 
 ;; Load scala mode
 (require 'scala-mode2)
+(defconst scala-indent:eager-strategy 1
+  "See 'scala-indent:run-on-strategy'")
 
 ;; Load ensime mode
 (require 'ensime)
@@ -314,6 +316,21 @@
                replace-table)
       replaces)))
 
+(defun uglify-scala-code ()
+  "Replace unicode with it's ascii counterparts."
+  (interactive)
+  (save-excursion
+    (beginning-of-buffer)
+    (let ((replace-table (make-hash-table :test 'equal))
+          replaces)
+      (puthash "⇒" "=>" replace-table)
+      (puthash "←" "<-" replace-table)
+      (puthash "→" "->" replace-table)
+      (maphash (lambda (toreplace withreplace)
+                 (replace-string toreplace withreplace))
+               replace-table)
+      replaces)))
+
 ;; Toggling minimap
 (defun minimap-toggle ()
   "Toggle minimap for current buffer."
@@ -379,7 +396,7 @@
 
 ;; key bindings
 (when (eq system-type 'darwin) ;; mac specific settings
- (setq mac-option-modifier 'meta)
+  (setq mac-option-modifier 'meta)
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   )
